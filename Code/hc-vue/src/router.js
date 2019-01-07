@@ -20,7 +20,7 @@ export default new Router({
     },
     {
       path: '*',
-      component: Login
+      component: () => import('./views/Index.vue')
 
     }
   ]
