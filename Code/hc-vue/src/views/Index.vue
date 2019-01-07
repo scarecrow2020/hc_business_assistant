@@ -16,7 +16,7 @@
             </v-list-tile>
           </v-list>
         </v-menu>
-        <v-spacer>123</v-spacer>
+        <v-spacer>abc</v-spacer>
         <v-btn icon>
           <v-icon>search</v-icon>
         </v-btn>
@@ -27,7 +27,7 @@
           <v-icon>more_vert</v-icon>
         </v-btn>
         <img class="head-img" src="@/assets/imgs/head.png">
-        <v-btn color="error" round>
+        <v-btn color="error" small round>
           admin
           <v-icon right>arrow_back</v-icon>
         </v-btn>
