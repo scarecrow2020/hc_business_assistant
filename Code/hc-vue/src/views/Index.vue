@@ -1,8 +1,10 @@
 <template>
   <v-app>
     <v-toolbar color="teal darken-1" dark>
-      <v-img :src="require('@/assets/imgs/logo1.png')"></v-img>
-      <img src="@/assets/imgs/logo1.png" alt="">
+      <v-img contain max-height="55px" max-width="100px" :src="require('@/assets/imgs/logo1.png')"></v-img>
+      <v-toolbar-side-icon>
+      <!-- <img src="@/assets/imgs/logo1.png" alt=""> -->
+      </v-toolbar-side-icon>
       <v-menu :nudge-width="100">
         <v-toolbar-title slot="activator">
           <span>All</span>
