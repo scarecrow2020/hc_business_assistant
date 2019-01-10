@@ -21,6 +21,20 @@ module.exports = {
   },
   pwa: { // 单页插件相关配置 https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
   },
+  chainWebpack: config => {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+        .loader('vue-loader')
+        .tap(options => {
+          Object.assign(options, {
+            transformAssetUrls: {
+              'v-img': 'src'
+            }
+          })
+          return options
+        })
+  },
   devServer: {
     open: true,
     host: '0.0.0.0',
