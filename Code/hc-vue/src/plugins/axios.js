@@ -10,7 +10,18 @@ import axios from 'axios'
 
 let config = {
   baseURL: '/api',
-  timeout: 60 * 1000 // Timeout
+  timeout: 60 * 1000, // Timeout
+  transformRequest: [data => {
+    if (data) {
+      let ret = ''
+      for (let [key, value] of Object.entries(data)) {
+        if (value) {
+          ret += encodeURIComponent(key) + '=' + encodeURIComponent(JSON.stringify(value)) + '&'
+        }
+      }
+      return ret.endsWith('&') ? ret.substring(0, ret.length - 1) : ret
+    }
+  }]
   // withCredentials: true, // Check cross-site Access-Control
 }
 
@@ -34,18 +45,6 @@ _axios.interceptors.request.use(config => {
     }
     config.url = encodeURI(url)
     config.params = null
-  } else {
-    config.transformRequest = [data => {
-      if (data) {
-        let ret = ''
-        for (let [key, value] of Object.entries(data)) {
-          if (value) {
-            ret += encodeURIComponent(key) + '=' + encodeURIComponent(JSON.stringify(value)) + '&'
-          }
-        }
-        return ret.endsWith('&') ? ret.substring(0, ret.length - 1) : ret
-      }
-    }]
   }
   return config// 只有return config后，才能成功发送请求
 }, error => {
@@ -65,14 +64,9 @@ _axios.interceptors.response.use(response => {
 })
 
 Plugin.install = (Vue, options) => {
-  Vue.axios = _axios
-  window.axios = _axios
+  // Vue.axios = _axios
+  // window.axios = _axios
   Object.defineProperties(Vue.prototype, {
-    axios: {
-      get () {
-        return _axios
-      }
-    },
     $axios: {
       get () {
         return _axios
@@ -83,4 +77,4 @@ Plugin.install = (Vue, options) => {
 
 Vue.use(Plugin)
 
-export default Plugin
+// export default Plugin
