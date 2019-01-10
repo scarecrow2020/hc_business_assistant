@@ -3,7 +3,11 @@ html {
 }
 
 .login-bgm {
-  background: 80% 100% no-repeat url('../imgs/2.jpg');
+  background: 100% 100% no-repeat url('../imgs/bg1.jpg');
+}
+
+.bg-color {
+  background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
 }
 /* body {
   margin: 0px;
