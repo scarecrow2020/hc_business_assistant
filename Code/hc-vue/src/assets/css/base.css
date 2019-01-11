@@ -2,12 +2,12 @@ html {
   overflow: hidden;
 }
 
-.login-bgm {
-  background: 100% 100% no-repeat url('../imgs/bg1.jpg');
-}
-
 .bg-color {
   background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+}
+
+.bg-none{
+  background-color: rgba(0,0,0,0) !important;
 }
 /* body {
   margin: 0px;

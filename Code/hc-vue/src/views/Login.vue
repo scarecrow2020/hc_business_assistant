@@ -11,19 +11,22 @@
       </v-layout>
     </v-toolbar>
     <v-content class="bg-color">
-      <v-container fill-height>
-        <v-layout align-center>
-          <v-flex text-xs-left>
-            <h2 class="display-3">Fast, comprehensive and efficient! <br/>Welcome to the business assistant.</h2>
-          </v-flex>
-        <v-flex text-xs-left>
-            <h2 class="display-3">Fast, comprehensive and efficient! <br/>Welcome to the business assistant.</h2>
-          </v-flex>
+      <v-container fill-height fluid pb-0>
+        <v-layout column wrap>
+          <v-layout row>
+            <v-layout column align-center justify-center>
+              <v-flex text-xs-center shrink>
+                <h2 class="display-2">快捷更高效<br/><br/>欢迎使用HC商家助手</h2>
+              </v-flex>
+            </v-layout>
+            <v-layout align-center justify-center>
+            </v-layout>
+          </v-layout>
+          <v-footer class="text-xs-center bg-none">
+            <v-spacer><span class="white--text">&copy;2019 Copyright HC商家助手 www.hcmanager.com</span></v-spacer>
+          </v-footer>
         </v-layout>
       </v-container>
     </v-content>
-    <v-footer inset class="text-xs-center">
-      <v-spacer><span class="white--text">HC商家助手 www.hcmanager.com Copyright &copy;2019</span></v-spacer>
-    </v-footer>
   </v-app>
 </template>
