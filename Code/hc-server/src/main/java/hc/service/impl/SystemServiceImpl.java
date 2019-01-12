@@ -1,8 +1,11 @@
 package hc.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import hc.mapper.UserMapper;
+import hc.model.SysDict;
 import hc.model.SysUser;
 import hc.service.SystemService;
+import hc.utils.Const;
 import hc.utils.Globals;
 import hc.utils.ResultMap;
 import hc.utils.UserInfo;
@@ -29,11 +32,15 @@ public class SystemServiceImpl implements SystemService {
     @Override
     @Transactional(readOnly = true)
     public ResultMap login(String userName, String password) {
-        SysUser user = userMapper.getUserByUserName(userName);
+        QueryWrapper<SysUser> qw = new QueryWrapper<>();
+        qw.eq("user_name", userName);
+        SysUser user = userMapper.selectOne(qw);
         if (user == null)
             return new ResultMap(false, "用户名错误");
-        if (!StringUtils.equals(user.getPassword(), password))
-            return new ResultMap(false, "密码错误");
+        if (!StringUtils.equals(userName, Const.ROLES.VISITOR)) {
+            if (!StringUtils.equals(user.getPassword(), password))
+                return new ResultMap(false, "密码错误");
+        }
         UserInfo info = new UserInfo();
         info.setName(user.getName());
         info.setJobNumber(user.getJobNumber());

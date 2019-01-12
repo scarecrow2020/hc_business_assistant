@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import './plugins/axios'
 import './plugins/vuetify'
+import './plugins/iview.js'
+import './plugins/hcPlugins.js'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import './assets/css/base.css'
+import './components'
 
 Vue.config.productionTip = false
 

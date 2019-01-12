@@ -20,7 +20,7 @@
           <div class="text-xs-center"><strong>admin</strong></div>
           <div class="text-xs-center"><strong>张三李四王五</strong></div>
         </div>
-        <v-btn color="error" flat fab>
+        <v-btn color="error" flat fab @click="logout">
           <v-icon size="30">exit_to_app</v-icon>
         </v-btn>
       </v-layout>
@@ -109,6 +109,16 @@ export default {
   data () {
     return {
       menus: menus
+    }
+  },
+  methods: {
+    logout () {
+      this.$router.replace('/login')
+      this.$axios.post('/logout', {
+        loginUuid: this.$store.state.userInfo.loginUuid
+      }).then(data => {
+        this.$store.commit('setUserInfo')
+      })
     }
   }
 }

@@ -181,6 +181,6 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'admin', 'admin', 'admin', '0', 'system_001', '2019-01-01', '0', 'admin', 'system_001', null, null, null, null, null, '2019-01-01 00:00:00', '2019-01-01 00:00:00', '2019-01-01 00:00:00', '1', '1', '0');
+INSERT INTO `sys_user` VALUES ('1', 'admin', 'adminadmin', 'admin', '0', 'system_001', '2019-01-01', '0', 'admin', 'system_001', null, null, null, null, null, '2019-01-01 00:00:00', '2019-01-01 00:00:00', '2019-01-01 00:00:00', '1', '1', '0');
 INSERT INTO `sys_user` VALUES ('2', 'visitor', 'visitor', 'visitor', '0', 'system_002', '2019-01-01', '0', 'visitor', 'system_002', '', '', '', '', '', '2019-01-01 00:00:00', '2019-01-01 00:00:00', '2019-01-01 00:00:00', '1', '1', '0');
 INSERT INTO `sys_user` VALUES ('3', 'boss', 'boss', 'boss', '0', null, null, '0', 'boss', null, '', '', '', '', '', '2019-01-01 00:00:00', '2019-01-01 00:00:00', '2019-01-01 00:00:00', '1', '1', '0');

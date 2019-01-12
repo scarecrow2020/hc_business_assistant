@@ -6,9 +6,9 @@ spring:
       #控制台显示建表语句
       show-sql: false
   datasource:
-    url: jdbc:mysql://localhost:13306/manager_assistant
-    username: root
-    password: root
+    url: jdbc:mysql://180.167.0.102:13309/test_lb
+    username: jq
+    password: jq
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
