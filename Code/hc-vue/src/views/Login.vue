@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-toolbar color="teal darken-1" dark>
+  <v-content class="bg-color">
+    <v-toolbar app color="teal darken-1" dark>
       <v-img contain max-height="55px" max-width="100px" src="@/assets/imgs/logo1.png"></v-img>
       <v-toolbar-title class="font-weight-bold display-1">HC Manager</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -8,47 +8,43 @@
         <v-btn flat round  depressed outline @click="login(true)">游客</v-btn>
       </v-layout>
     </v-toolbar>
-    <v-content class="bg-color">
-      <v-container fill-height fluid pb-0>
-        <v-layout column wrap>
-          <v-layout row>
-            <v-layout column align-center justify-center>
-              <v-flex text-xs-center shrink>
-                <h2 class="display-2">快捷更高效<br/><br/>欢迎使用HC商家助手</h2>
-              </v-flex>
-            </v-layout>
-            <v-layout align-center justify-center>
-              <v-form ref="form">
-                <v-text-field
-                  v-model="loginData.userName"
-                  label="用户名"
-                  autofocus
-                  clearable
-                  class="input-bgc"
-                ></v-text-field>
-                <v-text-field
-                  v-model="loginData.password"
-                  :append-icon="showPsd ? 'visibility_off' : 'visibility'"
-                  :type="showPsd ? 'text' : 'password'"
-                  label="密码"
-                  hint="至少6个字符"
-                  clearable
-                  @click:append="showPsd = !showPsd"
-                  @keydown.13="login()"
-                ></v-text-field>
-                <v-btn color="info" round @click="login()">登录</v-btn>
-                <v-btn round @click="login(true)">游客</v-btn>
-              </v-form>
-            </v-layout>
-          </v-layout>
-          <v-footer class="text-xs-center bg-none">
-            <v-spacer><span class="white--text subheading">&copy;2019 Copyright HC商家助手 www.hcmanager.com</span></v-spacer>
-          </v-footer>
+    <v-container fill-height fluid pb-0>
+      <v-layout row>
+        <v-layout column align-center justify-center>
+          <v-flex text-xs-center shrink>
+            <h2 class="display-2">快捷更高效<br/><br/>欢迎使用HC商家助手</h2>
+          </v-flex>
         </v-layout>
-      </v-container>
-    </v-content>
-    <!-- <hc-snackbar v-model="snackbar"></hc-snackbar> -->
-  </v-app>
+        <v-layout align-center justify-center>
+          <v-form ref="form">
+            <v-text-field
+              v-model="loginData.userName"
+              label="用户名"
+              autofocus
+              clearable
+              class="input-bgc"
+            ></v-text-field>
+            <v-text-field
+              v-model="loginData.password"
+              :append-icon="showPsd ? 'visibility_off' : 'visibility'"
+              :type="showPsd ? 'text' : 'password'"
+              label="密码"
+              hint="至少6个字符"
+              clearable
+              @click:append="showPsd = !showPsd"
+              @keydown.13="login()"
+            ></v-text-field>
+            <v-btn color="info" round @click="login()">登录</v-btn>
+            <v-btn round @click="login(true)">游客</v-btn>
+          </v-form>
+        </v-layout>
+      </v-layout>
+    </v-container>
+    <v-footer app class="text-xs-center bg-none">
+      <v-spacer><span class="white--text subheading">&copy;2019 Copyright HC商家助手 www.hcmanager.com</span></v-spacer>
+    </v-footer>
+    <hc-snackbar v-model="snackbar"></hc-snackbar>
+  </v-content>
 </template>
 <script>
 export default {
@@ -58,12 +54,12 @@ export default {
         userName: null,
         password: null
       },
-      showPsd: false
-      // snackbar: {
-      //   show: false,
-      //   message: null,
-      //   close: true
-      // }
+      showPsd: false,
+      snackbar: {
+        show: false,
+        message: null,
+        close: true
+      }
     }
   },
   methods: {
@@ -86,6 +82,7 @@ export default {
             type: 'success',
             message: '登录成功'
           })
+          // this.snackbar.show = true
           this.$store.commit('setUserInfo', data.result)
           this.$router.push({ name: 'index' })
         } else {

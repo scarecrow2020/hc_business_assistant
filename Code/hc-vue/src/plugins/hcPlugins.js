@@ -1,6 +1,10 @@
 import Vue from 'vue'
+import { VSnackbar, VBtn, VIcon } from 'vuetify/lib'
 const HcPlugin = {
   install (Vue) {
+    Vue.component('VSnackbar', VSnackbar)
+    Vue.component('VBtn', VBtn)
+    Vue.component('VIcon', VIcon)
     Vue.prototype.$notify = this.notify
     // Vue.prototype.$openDialog = this.openDialog
     // Vue.prototype.$notifyError = this.notifyError
@@ -23,17 +27,62 @@ const HcPlugin = {
     return new Promise((resolve, reject) => {
       const notify = new Vue({
         render (h) {
-          return h('hc-snackbar', {
-            props: { value: this.initParams }
-          })
+          // return h('hc-snackbar', {
+          //   props: { value: this.initParams }
+          // })
+          const close = h('v-btn', {
+            props: {
+              flat: true
+            },
+            on: {
+              click: () => { this.close() }
+            }
+          }, [h('v-icon', {}, 'cancel')])
+          return h('v-snackbar', {
+            props: this.props
+          }, [this.message, close])
         },
         data () {
+          let [messages, type = 'error'] = [{
+            error: '操作失败',
+            success: '操作成功'
+          }, options.color || options.type]
           return {
-            initParams: {
-              show: true,
+            props: {
+              value: true,
+              timeout: 3000,
+              top: true,
+              right: true,
+              'auto-height': true,
+              color: type,
               ...options
-            }
+            },
+            message: options.message || messages[type]
+            // initParams: {
+            //   show: true,
+            //   ...options
+            // }
           }
+        },
+        methods: {
+          close () {
+            this.$destroy()
+            let _parentElement = this.$el.parentNode
+            if (_parentElement) {
+              _parentElement.removeChild(this.$el)
+            }
+            this.$el.remove()
+          }
+        },
+        created () {
+          if (this.props.timeout) {
+            setTimeout(() => {
+              this.close()
+            }, this.props.timeout)
+          }
+        },
+        destroyed () {
+          // console.log('des')
         }
       }).$mount()
       document.getElementById('app').appendChild(notify.$el)

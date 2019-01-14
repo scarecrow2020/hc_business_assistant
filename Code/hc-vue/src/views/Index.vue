@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-content>
     <v-toolbar color="teal darken-1" dark>
       <!-- <v-img contain max-height="55px" max-width="100px" src="@/assets/imgs/logo1.png"></v-img> -->
       <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
@@ -28,7 +28,7 @@
     <v-content>
       <router-view></router-view>
     </v-content>
-  </v-app>
+  </v-content>
 </template>
 
 <script>
