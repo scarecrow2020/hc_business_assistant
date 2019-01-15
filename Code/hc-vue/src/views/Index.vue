@@ -11,7 +11,37 @@
         >
           {{menu.name}}
         </v-btn>
+        <v-menu offset-y>
+        <v-btn
+          slot="activator"
+          color="primary"
+          dark
+        >
+          Dropdown
+        </v-btn>
+        <v-list>
+          <v-list-tile
+            v-for="(item, index) in menus[1].subNavs"
+            :key="index"
+          >
+            <v-list-tile-title>{{ item.name }}</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
       </v-toolbar-items>
+      <!-- <v-list>
+        <v-list-group
+          prepend-icon="account_circle"
+          value="true"
+        >
+          <v-list-tile slot="activator">
+            <v-list-tile-title>Users</v-list-tile-title>
+          </v-list-tile>
+            <v-list-tile>
+              <v-list-tile-title>Admin</v-list-tile-title>
+            </v-list-tile>
+        </v-list-group>
+      </v-list> -->
       <v-layout align-center justify-end fill-height>
         <v-avatar :size="55">
           <img src="@/assets/imgs/head.png" alt="avatar">

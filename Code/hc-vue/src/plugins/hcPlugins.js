@@ -1,10 +1,7 @@
 import Vue from 'vue'
-import { VSnackbar, VBtn, VIcon } from 'vuetify/lib'
+
 const HcPlugin = {
   install (Vue) {
-    Vue.component('VSnackbar', VSnackbar)
-    Vue.component('VBtn', VBtn)
-    Vue.component('VIcon', VIcon)
     Vue.prototype.$notify = this.notify
     // Vue.prototype.$openDialog = this.openDialog
     // Vue.prototype.$notifyError = this.notifyError
@@ -41,6 +38,7 @@ const HcPlugin = {
           return h('v-snackbar', {
             props: this.props
           }, [this.message, close])
+          // return h('aaa', null)
         },
         data () {
           let [messages, type = 'error'] = [{
@@ -75,11 +73,14 @@ const HcPlugin = {
           }
         },
         created () {
-          if (this.props.timeout) {
-            setTimeout(() => {
-              this.close()
-            }, this.props.timeout)
-          }
+          // this.$axios.get('/helloWorld').then(data => {
+          //   console.log(data)
+          // })
+          // if (this.props.timeout) {
+          //   setTimeout(() => {
+          //     this.close()
+          //   }, this.props.timeout)
+          // }
         },
         destroyed () {
           // console.log('des')
