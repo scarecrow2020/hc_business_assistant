@@ -2,12 +2,11 @@
 
 import Vue from 'vue'
 import axios from 'axios'
-
+import plugins from './hcPlugins'
 // Full config:  https://github.com/axios/axios#request-config
 // axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
 let config = {
   baseURL: '/api',
   timeout: 60 * 1000, // Timeout
@@ -56,11 +55,13 @@ _axios.interceptors.request.use(config => {
 _axios.interceptors.response.use(response => {
   // Do something with response data
   let data = response.data
-  return data
-}, error => {
-  console.log(error)
+  return { data, success: true }
+}, err => {
+  let data = err.response.data
   // Do something with response error
-  return Promise.reject(error)
+  plugins.notify({ message: data.message })
+  let result = { data, success: false }
+  return Promise.reject(result)
 })
 
 Plugin.install = (Vue, options) => {

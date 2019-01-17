@@ -38,7 +38,6 @@ const HcPlugin = {
           return h('v-snackbar', {
             props: this.props
           }, [this.message, close])
-          // return h('aaa', null)
         },
         data () {
           let [messages, type = 'error'] = [{
@@ -73,14 +72,11 @@ const HcPlugin = {
           }
         },
         created () {
-          // this.$axios.get('/helloWorld').then(data => {
-          //   console.log(data)
-          // })
-          // if (this.props.timeout) {
-          //   setTimeout(() => {
-          //     this.close()
-          //   }, this.props.timeout)
-          // }
+          if (this.props.timeout) {
+            setTimeout(() => {
+              this.close()
+            }, this.props.timeout)
+          }
         },
         destroyed () {
           // console.log('des')
@@ -184,4 +180,4 @@ const HcPlugin = {
   // }
 }
 Vue.use(HcPlugin)
-// export default MyPlugin
+export default HcPlugin

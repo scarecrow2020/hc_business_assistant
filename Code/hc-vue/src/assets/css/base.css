@@ -11,6 +11,15 @@ html {
 .bg-none{
   background-color: rgba(0,0,0,0) !important;
 }
+
+.layout-item {
+  flex: 1 1;
+  position: relative;
+  overflow: hidden
+}
+.list-top {
+  border-bottom: 1px solid #e3e3e3;
+}
 /* body {
   margin: 0px;
   padding: 0px;

@@ -76,7 +76,7 @@ export default {
           return
         }
       }
-      this.$axios.get('/login', { params }).then(data => {
+      this.$axios.get('/login', { params }).then(({ data }) => {
         if (data.success) {
           this.$notify({
             type: 'success',

@@ -4,6 +4,7 @@ import Login from './views/Login.vue'
 import Index from './views/Index.vue'
 import Test from './views/Test.vue'
 import User from './views/settings/User.vue'
+import System from './views/settings/System.vue'
 
 Vue.use(Router)
 
@@ -26,6 +27,10 @@ export default new Router({
       path: 'user',
       name: 'user',
       component: User
+    }, {
+      path: 'system',
+      name: 'system',
+      component: System
     }]
   }, {
     path: '/test',

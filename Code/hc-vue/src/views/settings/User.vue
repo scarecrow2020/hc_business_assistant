@@ -1,9 +1,31 @@
 <template>
-  <v-app>user</v-app>
+  <v-layout row>
+    <v-layout class="red" :style="{ width: size.leftWidth }">
+      <v-flex>
+        left
+      </v-flex>
+    </v-layout>
+    <v-layout column class="blue" style="width:80%">
+      <v-layout style="height: 20%; width:100%" class="yellow">top</v-layout>
+      <v-layout style="height: 80%;width:100%" class="pink">
+        <v-layout style="width:50%" class="green">center</v-layout>
+        <v-layout>right</v-layout>
+      </v-layout>
+    </v-layout>
+  </v-layout>
 </template>
 
 <script>
 export default {
+  props: {
+    size: {
+      default () {
+        return {
+          leftWidth: '20%'
+        }
+      }
+    }
+  },
   data () {
     return {}
   }

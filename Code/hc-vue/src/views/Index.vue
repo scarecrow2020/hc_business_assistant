@@ -1,47 +1,22 @@
 <template>
   <v-content>
     <v-toolbar color="teal darken-1" dark>
-      <!-- <v-img contain max-height="55px" max-width="100px" src="@/assets/imgs/logo1.png"></v-img> -->
-      <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
       <v-toolbar-title class="font-weight-bold display-1">HC Manager</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn v-for="menu in menus" :key="menu.id"
-          flat exact-active-class="teal lighten-1" :to="menu.path"
-        >
-          {{menu.name}}
-        </v-btn>
-        <v-menu offset-y>
-        <v-btn
-          slot="activator"
-          color="primary"
-          dark
-        >
-          Dropdown
-        </v-btn>
-        <v-list>
-          <v-list-tile
-            v-for="(item, index) in menus[1].subNavs"
-            :key="index"
-          >
-            <v-list-tile-title>{{ item.name }}</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-menu>
-      </v-toolbar-items>
-      <!-- <v-list>
-        <v-list-group
-          prepend-icon="account_circle"
-          value="true"
-        >
-          <v-list-tile slot="activator">
-            <v-list-tile-title>Users</v-list-tile-title>
-          </v-list-tile>
-            <v-list-tile>
-              <v-list-tile-title>Admin</v-list-tile-title>
+        <v-menu offset-y open-on-hover v-for="menu in menus" :key="menu.id">
+          <v-btn slot="activator" flat exact-active-class="teal lighten-1" :to="menu.path">{{ menu.name }}</v-btn>
+          <v-list subheader v-if="menu.subNavs">
+            <v-list-tile
+              v-for="(item, index) in menu.subNavs"
+              :key="index"
+              :to="item.path"
+            >
+              <v-list-tile-title>{{ item.name }}</v-list-tile-title>
             </v-list-tile>
-        </v-list-group>
-      </v-list> -->
+          </v-list>
+        </v-menu>
+      </v-toolbar-items>
       <v-layout align-center justify-end fill-height>
         <v-avatar :size="55">
           <img src="@/assets/imgs/head.png" alt="avatar">
@@ -55,9 +30,9 @@
         </v-btn>
       </v-layout>
     </v-toolbar>
-    <v-content>
+    <v-container fill-height fluid px-0 py-0>
       <router-view></router-view>
-    </v-content>
+    </v-container>
   </v-content>
 </template>
 
@@ -127,7 +102,8 @@ const menus = [{
   path: '/settings/user',
   subNavs: [{
     id: '6-2',
-    name: '系统设置'
+    name: '系统设置',
+    path: '/settings/system'
   }, {
     id: '6-3',
     name: '人员',
