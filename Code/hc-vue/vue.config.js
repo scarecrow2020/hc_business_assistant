@@ -12,7 +12,7 @@ module.exports = {
     sourceMap: false, // 是否在构建样式地图，false将提高构建速度
     loaderOptions: { // css预设器配置项
       sass: {
-        data: ''//`@import "@/assets/scss/mixin.scss";`
+        data: `@import "@/assets/scss/base.scss";`
       }
     }
   },

@@ -1,25 +1,4 @@
-html {
-  overflow: hidden;
-}
 
-.bg-color {
-  /* background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59); */
-  /* background: linear-gradient(to right,#feac5e, #c779d0, #4bc0c8); */
-  background: linear-gradient(to right, #fc00ff, #12c2e9);
-}
-
-.bg-none{
-  background-color: rgba(0,0,0,0) !important;
-}
-
-.layout-item {
-  flex: 1 1;
-  position: relative;
-  overflow: hidden
-}
-.list-top {
-  border-bottom: 1px solid #e3e3e3;
-}
 /* body {
   margin: 0px;
   padding: 0px;

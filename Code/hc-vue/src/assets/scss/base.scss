@@ -1,0 +1,31 @@
+$border-color: #e3e3e3;
+$list-border: 1px solid $border-color;
+
+html {
+  overflow: hidden;
+}
+
+.bg-color {
+  /* background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59); */
+  /* background: linear-gradient(to right,#feac5e, #c779d0, #4bc0c8); */
+  background: linear-gradient(to right, #fc00ff, #12c2e9);
+}
+.bg-none{
+  background-color: rgba(0,0,0,0) !important;
+}
+
+.list-left {
+  border: {
+    right: $list-border;
+  }
+}
+.list-top {
+  border: {
+    bottom: $list-border;
+  }
+}
+.list-right {
+  border: {
+    left: $list-border;
+  }
+}
