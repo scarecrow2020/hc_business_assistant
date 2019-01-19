@@ -1,5 +1,6 @@
 $border-color: #e3e3e3;
 $list-border: 1px solid $border-color;
+$bgc-title: gainsboro;
 
 html {
   overflow: hidden;
@@ -13,11 +14,82 @@ html {
 .bg-none{
   background-color: rgba(0,0,0,0) !important;
 }
+.bgc-main {
+  background-color: #f3f3f3;
+}
 
+.hc-title {
+  padding: .5rem;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: $bgc-title;
+  text-align: center;
+}
+.filter .search {
+  margin: .5rem 0;
+  padding-top: 0px;
+  flex: 0 0 auto;
+  background-color: white;
+}
+.filter-items {
+  background-color: white;
+  flex: 0 0 auto;
+  margin-bottom: 5px;
+}
+.filter-item-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  min-width: 3.5rem;
+}
+.filter-item {
+  margin: 5px 0 5px 5px;
+  border-radius: 4px;
+  display: inline-block;
+  line-height: 2;
+  font-size: 14px;
+  padding: 0 .5rem;
+  color: black;
+}
+.filter-item:hover{
+  background-color: #e3e3e3;
+  cursor: pointer;
+}
+.filter-item.is-active {
+  background-color: #409EFF;
+  color: white;
+  font-weight: 600
+}
+
+.btn-group .v-btn {
+  margin: {
+    left: 5px;
+    right: 0;
+  }
+}
+.btn-mini {
+  min-width: 50px;
+}
+
+.top-filter {
+  min-height: 40px;
+}
+.top-filter .v-chip {
+  height: 29px;
+  margin-left: 1px;
+}
+.top-filter .btn-mini {
+  margin: {
+    left: 0;
+    right: 5px;
+  }
+}
 .list-left {
   border: {
     right: $list-border;
   }
+  padding: 0px 10px 10px;
 }
 .list-top {
   border: {
@@ -28,4 +100,17 @@ html {
   border: {
     left: $list-border;
   }
+}
+
+.hc-table {
+  flex: 1;
+  height: 100%;
+  border-top: $list-border;
+  border-right: $list-border;
+  border-bottom: $list-border;
+  background-color: white;
+}
+.hc-col {
+  text-align: center !important;
+  margin: 10px;
 }

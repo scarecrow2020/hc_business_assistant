@@ -3,6 +3,13 @@ import Vue from 'vue'
 const HcPlugin = {
   install (Vue) {
     Vue.prototype.$notify = this.notify
+    /* eslint-disable no-extend-native */
+    Array.prototype.remove = function (val) {
+      var index = this.indexOf(val)
+      if (index > -1) {
+        this.splice(index, 1)
+      }
+    }
     // Vue.prototype.$openDialog = this.openDialog
     // Vue.prototype.$notifyError = this.notifyError
     // Vue.prototype.$notifySuccess = this.notifySuccess

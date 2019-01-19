@@ -30,7 +30,7 @@
         </v-btn>
       </v-layout>
     </v-toolbar>
-    <v-container fill-height fluid px-0 py-0>
+    <v-container fill-height fluid px-0 py-0 class="bgc-main">
       <router-view></router-view>
     </v-container>
   </v-content>

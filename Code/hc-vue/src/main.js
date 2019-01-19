@@ -8,7 +8,7 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import './assets/css/base.css'
-import './assets/scss/base.scss'
+import './assets/scss'
 import './components'
 
 Vue.config.productionTip = false
