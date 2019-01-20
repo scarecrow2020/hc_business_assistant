@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-layout column>
     <v-toolbar color="teal darken-1" dark>
       <v-toolbar-title class="font-weight-bold display-1">HC Manager</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -30,10 +30,10 @@
         </v-btn>
       </v-layout>
     </v-toolbar>
-    <v-container fill-height fluid px-0 py-0 class="bgc-main">
+    <v-layout class="bgc-main">
       <router-view></router-view>
-    </v-container>
-  </v-content>
+    </v-layout>
+  </v-layout>
 </template>
 
 <script>

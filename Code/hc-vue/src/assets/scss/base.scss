@@ -2,7 +2,9 @@ $border-color: #e3e3e3;
 $list-border: 1px solid $border-color;
 $bgc-title: gainsboro;
 
-html {
+html,body {
+  height: 100%;
+  width:100%;
   overflow: hidden;
 }
 
@@ -85,18 +87,26 @@ html {
     right: 5px;
   }
 }
+.hc-list {
+  margin: 5px;
+}
 .list-left {
   border: {
     right: $list-border;
   }
-  padding: 0px 10px 10px;
+  padding: {
+    left: 5px;
+    right: 10px;
+  }
 }
 .list-top {
+  flex: 0 0 auto;
   border: {
     bottom: $list-border;
   }
 }
 .list-right {
+  flex: 0 0 auto;
   border: {
     left: $list-border;
   }

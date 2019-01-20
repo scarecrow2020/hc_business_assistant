@@ -1,9 +1,10 @@
 <template>
   <div class="top-filter">
     <v-btn small color="warning" class="btn-mini" @click="clearAll" v-show="items.length > 0">清除</v-btn>
-    <v-chip color="info" text-color="white" label close
+    <v-chip label close
       v-for="item in items" :key="item.id" @input="removeItem(item)"
     >{{item.name}}</v-chip>
+    <!-- color="info" text-color="white" -->
   </div>
 </template>
 <script>
