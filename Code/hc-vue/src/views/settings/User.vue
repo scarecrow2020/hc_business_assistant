@@ -36,6 +36,7 @@
       <!-- <div slot="main" style="height:100%;width:100%"> -->
       <v-data-table
         select-all
+        v-model="selectedRow"
         :headers="tableHeaders"
         :items="tableData"
         :search="filterParams.queryName"
@@ -58,11 +59,11 @@
           <td class="text-xs-right">{{ props.item.phone }}</td>
           <td class="text-xs-right">{{ props.item.contactWay }}</td>
           <td class="text-xs-right">{{ props.item.address }}</td>
-          <td class="text-xs-right">{{ props.item.address }}</td>
-          <td class="text-xs-right">{{ props.item.address }}</td>
-          <td class="text-xs-right">{{ props.item.address }}</td>
-          <td class="text-xs-right">{{ props.item.address }}</td>
-          <td class="text-xs-right">{{ props.item.address }}</td>
+          <td class="text-xs-right">{{ props.item.email }}</td>
+          <td class="text-xs-right">{{ props.item.sex }}</td>
+          <td class="text-xs-right">{{ props.item.jobNumber }}</td>
+          <td class="text-xs-right">{{ props.item.age }}</td>
+          <td class="text-xs-right">{{ props.item.birthday }}</td>
         </template>
         <v-flex slot="no-data">no data</v-flex>
         <v-flex slot="actions-prepend">start</v-flex>
@@ -146,8 +147,8 @@ const statisticsData = [{
   value: 5
 }]
 const tableHeaders = [
-  { text: '序号' },
-  { text: '性名', align: 'left', sortable: false, value: 'name', width: '300px' },
+  { text: '序号', value: 'index', sortable: false },
+  { text: '性名', align: 'left', value: 'name', width: '300px' },
   { text: '用户名', value: 'userName' },
   { text: '身份证', value: 'cardCode' },
   { text: '电话', value: 'phone' },
@@ -160,16 +161,16 @@ const tableHeaders = [
   { text: '生日', value: 'birthday' }
 ]
 const tableData = [
-  { name: '孙悟空', userName: 'zs', phone: '123' },
-  { name: '孙行者', userName: 'zs', phone: '123' },
-  { name: '行者孙', userName: 'zs', phone: '123' },
-  { name: '者行孙', userName: 'zs', phone: '123' },
-  { name: '孙者行', userName: 'zs', phone: '123' },
-  { name: '孙悟空', userName: 'zs', phone: '123' },
-  { name: '孙行者', userName: 'zs', phone: '123' },
-  { name: '行者孙', userName: 'zs', phone: '123' },
-  { name: '者行孙', userName: 'zs', phone: '123' },
-  { name: '孙者行', userName: 'zs', phone: '1234' }
+  { id: 1, name: '孙悟空', userName: 'zs', phone: '123' },
+  { id: 2, name: '孙行者', userName: 'zs', phone: '123' },
+  { id: 3, name: '行者孙', userName: 'zs', phone: '123' },
+  { id: 4, name: '者行孙', userName: 'zs', phone: '123' },
+  { id: 5, name: '孙者行', userName: 'zs', phone: '123' },
+  { id: 6, name: '孙悟空', userName: 'zs', phone: '123' },
+  { id: 7, name: '孙行者', userName: 'zs', phone: '123' },
+  { id: 8, name: '行者孙', userName: 'zs', phone: '123' },
+  { id: 9, name: '者行孙', userName: 'zs', phone: '123' },
+  { id: 10, name: '孙者行', userName: 'zs', phone: '1234' }
 ]
 export default {
   props: {
@@ -199,11 +200,13 @@ export default {
       }],
       tableHeaders: tableHeaders,
       tableData: tableData,
-      pagination: {}
+      pagination: {},
+      selectedRow: []
     }
   },
   methods: {
     filterChange () {
+      console.log(this.selectedRow)
       console.log(this.pagination)
       console.log(this.filterParams)
     },
