@@ -1,5 +1,5 @@
 import Vue from 'vue'
-// import './plugins/vuetify'
+import './plugins/vuetify'
 import './plugins/hcPlugins.js'
 import './plugins/iview.js'
 import './plugins/axios'

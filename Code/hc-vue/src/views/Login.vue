@@ -1,4 +1,5 @@
 <template>
+<v-app>
   <v-content class="bg-color">
     <v-toolbar app color="teal darken-1" dark>
       <v-img contain max-height="55px" max-width="100px" src="@/assets/imgs/logo1.png"></v-img>
@@ -45,6 +46,7 @@
     </v-footer>
     <hc-snackbar v-model="snackbar"></hc-snackbar>
   </v-content>
+  </v-app>
 </template>
 <script>
 export default {
