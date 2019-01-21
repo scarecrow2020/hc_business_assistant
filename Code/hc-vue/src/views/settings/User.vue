@@ -4,12 +4,13 @@
     <v-layout slot="top">
       <v-layout column>
         <v-layout>
-          <v-layout column class="hc-table"
-            v-for="(item, index) in statisticsData" :key="index">
-            <div class="f-title hc-col">{{item.title}}</div>
-            <v-divider></v-divider>
-            <div class="body-2 hc-col">{{item.value}}</div>
-          </v-layout>
+          <v-flex class="hc-table" v-for="(item, index) in statisticsData" :key="index">
+            <v-layout column>
+              <div class="f-title hc-col">{{item.title}}</div>
+              <v-divider></v-divider>
+              <div class="body-2 hc-col">{{item.value}}</div>
+            </v-layout>
+          </v-flex>
         </v-layout>
         <!-- <hc-chip v-model="filterParams" :data="filterItems" @clear="filterChange"></hc-chip> -->
         <v-layout align-end class="btn-group">
@@ -25,7 +26,7 @@
         <hc-chip v-model="filterParams" :data="filterItems" @clear="filterChange"></hc-chip>
         <v-spacer></v-spacer>
         <v-text-field
-          style="max-width:30%"
+          class="gird-search"
           v-model="filterParams.queryName"
           append-icon="search"
           label="输入关键字"
@@ -42,16 +43,16 @@
         :search="filterParams.queryName"
         no-data-text="没有数据。。。"
         :pagination.sync="pagination"
-        rows-per-page-text="123"
+        rows-per-page-text=""
       >
         <template slot="items" slot-scope="props">
           <td style="max-width:20px">
-          <v-checkbox
-            v-model="props.selected"
-            primary
-            hide-details
-          ></v-checkbox>
-        </td>
+            <v-checkbox
+              v-model="props.selected"
+              primary
+              hide-details
+            ></v-checkbox>
+          </td>
           <td>{{ props.index + 1 }}</td>
           <td>{{ props.item.name }}</td>
           <td class="text-xs-right">{{ props.item.userName }}</td>
@@ -65,12 +66,16 @@
           <td class="text-xs-right">{{ props.item.age }}</td>
           <td class="text-xs-right">{{ props.item.birthday }}</td>
         </template>
-        <v-flex slot="no-data">no data</v-flex>
-        <v-flex slot="actions-prepend">start</v-flex>
+        <!-- <v-flex slot="no-data">no data</v-flex> -->
+        <!-- <div slot="actions-prepend">start</div> -->
+        <template slot="pageText" slot-scope="props">
+          当前条数 {{ props.pageStart }} - {{ props.pageStop }} 共 {{ props.itemsLength }} 条
+        </template>
+        <div slot="actions-append" style="width:100px"></div>
         <v-alert slot="no-results" :value="false" color="error" icon="warning">
+          <Button type="primary">Primary</Button>
           Your search for "{{ filterParams.queryName }}" found no results.
         </v-alert>
-        <div slot="actions-append">end</div>
       </v-data-table>
       <!-- </div> -->
     </v-card>
@@ -170,7 +175,27 @@ const tableData = [
   { id: 7, name: '孙行者', userName: 'zs', phone: '123' },
   { id: 8, name: '行者孙', userName: 'zs', phone: '123' },
   { id: 9, name: '者行孙', userName: 'zs', phone: '123' },
-  { id: 10, name: '孙者行', userName: 'zs', phone: '1234' }
+  { id: 10, name: '孙者行', userName: 'zs', phone: '1234' },
+  { id: 11, name: '孙悟空', userName: 'zs', phone: '123' },
+  { id: 12, name: '孙行者', userName: 'zs', phone: '123' },
+  { id: 13, name: '行者孙', userName: 'zs', phone: '123' },
+  { id: 14, name: '者行孙', userName: 'zs', phone: '123' },
+  { id: 15, name: '孙者行', userName: 'zs', phone: '123' },
+  { id: 16, name: '孙悟空', userName: 'zs', phone: '123' },
+  { id: 17, name: '孙行者', userName: 'zs', phone: '123' },
+  { id: 18, name: '行者孙', userName: 'zs', phone: '123' },
+  { id: 19, name: '者行孙', userName: 'zs', phone: '123' },
+  { id: 20, name: '孙者行', userName: 'zs', phone: '1234' },
+  { id: 21, name: '孙悟空', userName: 'zs', phone: '123' },
+  { id: 22, name: '孙行者', userName: 'zs', phone: '123' },
+  { id: 23, name: '行者孙', userName: 'zs', phone: '123' },
+  { id: 24, name: '者行孙', userName: 'zs', phone: '123' },
+  { id: 25, name: '孙者行', userName: 'zs', phone: '123' },
+  { id: 26, name: '孙悟空', userName: 'zs', phone: '123' },
+  { id: 27, name: '孙行者', userName: 'zs', phone: '123' },
+  { id: 28, name: '行者孙', userName: 'zs', phone: '123' },
+  { id: 29, name: '者行孙', userName: 'zs', phone: '123' },
+  { id: 30, name: '孙者行', userName: 'zs', phone: '1234' }
 ]
 export default {
   props: {
