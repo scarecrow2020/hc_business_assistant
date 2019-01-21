@@ -1,10 +1,10 @@
 <template>
-  <v-content>
-    <!-- <div></div> -->
-    <v-snackbar v-model="show"></v-snackbar>
-    <v-btn @click="test">test</v-btn>
-    <v-btn @click="test1">test1</v-btn>
-  </v-content>
+  <Layout class="fill-height bgc-login">
+    <Header class="teal">Header</Header>
+    <Content>
+    </Content>
+    <Footer class="align-center bgc-none f-white">&copy;2019 Copyright HC商家助手 www.hcmanager.com</Footer>
+  </Layout>
 </template>
 <script>
 export default {

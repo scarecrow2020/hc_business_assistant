@@ -8,122 +8,139 @@ html,body {
   overflow: hidden;
 }
 
-.bg-color {
+.fill-height {
+  height: 100%;
+}
+
+.bgc-login {
   /* background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59); */
   /* background: linear-gradient(to right,#feac5e, #c779d0, #4bc0c8); */
   background: linear-gradient(to right, #fc00ff, #12c2e9);
 }
-.bg-none{
-  background-color: rgba(0,0,0,0) !important;
-}
-.bgc-main {
-  background-color: #f3f3f3;
-}
 
-.hc-title {
-  padding: .5rem;
-  font-size: 15px;
-  font-weight: 600;
-  background-color: $bgc-title;
+.align-center {
   text-align: center;
 }
-.filter .search {
-  margin: .5rem 0;
-  padding-top: 0px;
-  flex: 0 0 auto;
-  background-color: white;
+.bgc-none{
+  background-color: rgba(0,0,0,0);
 }
-.filter-items {
-  background-color: white;
-  flex: 0 0 auto;
-  margin-bottom: 5px;
+.bgc {
+  background-color: #12c2e9;
 }
-.filter-item-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.5rem;
-  min-width: 3.5rem;
+.yellow {
+  background-color: yellow;
 }
-.filter-item {
-  margin: 5px 0 5px 5px;
-  border-radius: 4px;
-  display: inline-block;
-  line-height: 2;
-  font-size: 14px;
-  padding: 0 .5rem;
-  color: black;
+.red {
+  background-color: red;
 }
-.filter-item:hover{
-  background-color: #e3e3e3;
-  cursor: pointer;
+.green {
+  background-color: green;
 }
-.filter-item.is-active {
-  background-color: #409EFF;
-  color: white;
-  font-weight: 600
+.pink {
+  background-color: pink;
 }
+.teal {
+  background-color: teal;
+}
+// .bgc-main {
+//   background-color: #f3f3f3;
+// }
 
-.btn-group .v-btn {
-  margin: {
-    left: 0;
-    right: 5px;
-  }
-}
-.btn-mini {
-  min-width: 50px;
-}
+// .hc-title {
+//   padding: .5rem;
+//   font-size: 15px;
+//   font-weight: 600;
+//   background-color: $bgc-title;
+//   text-align: center;
+// }
+// .filter .search {
+//   margin: .5rem 0;
+//   padding-top: 0px;
+//   flex: 0 0 auto;
+//   background-color: white;
+// }
+// .filter-items {
+//   background-color: white;
+//   flex: 0 0 auto;
+//   margin-bottom: 5px;
+// }
+// .filter-item-title {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 3.5rem;
+//   min-width: 3.5rem;
+// }
+// .filter-item {
+//   margin: 5px 0 5px 5px;
+//   border-radius: 4px;
+//   display: inline-block;
+//   line-height: 2;
+//   font-size: 14px;
+//   padding: 0 .5rem;
+//   color: black;
+// }
+// .filter-item:hover{
+//   background-color: #e3e3e3;
+//   cursor: pointer;
+// }
+// .filter-item.is-active {
+//   background-color: #409EFF;
+//   color: white;
+//   font-weight: 600
+// }
 
-.top-filter {
-  min-height: 40px;
-}
-.top-filter .v-chip {
-  height: 29px;
-  margin-left: 1px;
-}
-.top-filter .btn-mini {
-  margin: {
-    left: 0;
-    right: 5px;
-  }
-}
-.hc-list {
-  margin: 5px;
-}
-.list-left {
-  // border: {
-  //   right: $list-border;
-  // }
-  padding: {
-    left: 5px;
-    right: 10px;
-  }
-}
-.list-top {
-  flex: 0 0 auto;
-  // border: {
-  //   bottom: $list-border;
-  // }
-}
-.list-right {
-  flex: 0 0 auto;
-  // border: {
-  //   left: $list-border;
-  // }
-}
+// .btn-group .v-btn {
+//   margin: {
+//     left: 0;
+//     right: 5px;
+//   }
+// }
+// .btn-mini {
+//   min-width: 50px;
+// }
 
-.hc-table {
-  flex: 1;
-  border: $list-border;
-  background-color: white;
-}
-.hc-col {
-  text-align: center;
-  margin: 5px;
-}
+// .top-filter {
+//   min-height: 40px;
+// }
+// .top-filter .v-chip {
+//   height: 29px;
+//   margin-left: 1px;
+// }
+// .top-filter .btn-mini {
+//   margin: {
+//     left: 0;
+//     right: 5px;
+//   }
+// }
+// .hc-list {
+//   margin: 5px;
+// }
+// .list-left {
+//   padding: {
+//     left: 5px;
+//     right: 10px;
+//   }
+// }
+// .list-top {
+//   flex: 0 0 auto;
+// }
+// .list-right {
+//   flex: 0 0 auto;
+// }
 
-.gird-search {
-  flex: 0 0 auto;
-  width: 20%;
-  margin-right: 5%
-}
+// .hc-table {
+//   flex: 1;
+//   border: $list-border;
+//   background-color: white;
+// }
+// .hc-col {
+//   text-align: center;
+//   margin: 5px;
+// }
+
+// .gird-search {
+//   flex: 0 0 auto;
+//   width: 20%;
+//   margin-right: 5%
+// }
