@@ -35,19 +35,27 @@
               </FormItem>
           </Form> -->
           <Form ref="formInline" style="width:250px;margin:20px;0px">
-              <FormItem prop="user">
-                  <Input type="text" v-model="loginData.userName" placeholder="Username">
-                      <Icon type="ios-person-outline" slot="prepend"></Icon>
-                  </Input>
-              </FormItem>
-              <FormItem prop="password">
-                  <Input type="password" v-model="loginData.password" placeholder="Password">
-                      <Icon type="ios-lock-outline" slot="prepend"></Icon>
-                  </Input>
+              <FormItem>
+                  <Input type="text" size="large" prefix="ios-person" v-model="loginData.userName" placeholder="请输入用户名" clearable />
               </FormItem>
               <FormItem>
-                  <Button type="primary" >Signin</Button>
-                  <Button type="primary" >Signin</Button>
+                <Input placeholder="请输入密码" size="large" :type="showPsd ? 'text' : 'password'" v-model="loginData.password" clearable >
+                  <Icon :type="showPsd ? 'md-eye' : 'ios-lock'" slot="prefix" @click.native="showPsd = !showPsd"></Icon>
+                </Input>
+                <!-- <Row type="flex" style="background-color:white;border-radius:3px">
+                  <Col :span="22">
+                <Input placeholder="请输入密码" size="large" :type="showPsd ? 'text' : 'password'" v-model="loginData.password" clearable >
+                  <Icon :type="showPsd ? 'md-eye' : 'ios-lock'" slot="prefix" @click.native="showPsd = !showPsd"></Icon>
+                </Input>
+                </Col>
+                <Col :span="2">
+                <Icon type="md-eye" :size="20" style="height:100%;padding-top:8px" ></Icon>
+                </Col>
+                </Row> -->
+              </FormItem>
+              <FormItem>
+                <Button type="primary">Signin</Button>
+                <Button type="primary">Signin</Button>
               </FormItem>
           </Form>
         </col>
@@ -71,13 +79,14 @@ export default {
   },
   methods: {
     test () {
+      console.log(111)
       // this.show = true
-      this.$notify({
-        // timeout: 1000,
-        type: 'info',
-        close: true,
-        message: this.lorem
-      })
+      // this.$notify({
+      //   // timeout: 1000,
+      //   type: 'info',
+      //   close: true,
+      //   message: this.lorem
+      // })
     },
     test1 () {
       this.$Notice.open({ title: 123 })
@@ -85,3 +94,6 @@ export default {
   }
 }
 </script>
+<style scoped >
+
+</style>
