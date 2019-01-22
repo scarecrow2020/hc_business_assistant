@@ -35,28 +35,28 @@
               </FormItem>
           </Form> -->
           <Form ref="formInline" style="width:250px;margin:20px;0px">
-              <FormItem>
-                  <Input type="text" size="large" prefix="ios-person" v-model="loginData.userName" placeholder="请输入用户名" clearable />
-              </FormItem>
-              <FormItem>
-                <Input placeholder="请输入密码" size="large" :type="showPsd ? 'text' : 'password'" v-model="loginData.password" clearable >
-                  <Icon :type="showPsd ? 'md-eye' : 'ios-lock'" slot="prefix" @click.native="showPsd = !showPsd"></Icon>
-                </Input>
-                <!-- <Row type="flex" style="background-color:white;border-radius:3px">
-                  <Col :span="22">
-                <Input placeholder="请输入密码" size="large" :type="showPsd ? 'text' : 'password'" v-model="loginData.password" clearable >
-                  <Icon :type="showPsd ? 'md-eye' : 'ios-lock'" slot="prefix" @click.native="showPsd = !showPsd"></Icon>
-                </Input>
-                </Col>
-                <Col :span="2">
-                <Icon type="md-eye" :size="20" style="height:100%;padding-top:8px" ></Icon>
-                </Col>
-                </Row> -->
-              </FormItem>
-              <FormItem>
-                <Button type="primary">Signin</Button>
-                <Button type="primary">Signin</Button>
-              </FormItem>
+            <FormItem>
+              <hc-input placeholder="请输入用户名" prefix="ios-person" size="large" v-model="loginData.userName"></hc-input>
+            </FormItem>
+            <FormItem>
+              <hc-input placeholder="请输入密码" size="large" v-model="loginData.password" :type="showPsd ? 'text' : 'password'" @enter-click="login(true)">
+                <Icon :type="showPsd ? 'md-eye' : 'ios-lock'" slot="prefix" @click.native="showPsd = !showPsd"></Icon>
+              </hc-input>
+              <!-- <Row type="flex" style="background-color:white;border-radius:3px">
+                <Col :span="22">
+              <Input placeholder="请输入密码" size="large" :type="showPsd ? 'text' : 'password'" v-model="loginData.password" clearable >
+                <Icon :type="showPsd ? 'md-eye' : 'ios-lock'" slot="prefix" @click.native="showPsd = !showPsd"></Icon>
+              </Input>
+              </Col>
+              <Col :span="2">
+              <Icon type="md-eye" :size="20" style="height:100%;padding-top:8px" ></Icon>
+              </Col>
+              </Row> -->
+            </FormItem>
+            <FormItem>
+              <Button type="primary">Signin</Button>
+              <Button type="primary">Signin</Button>
+            </FormItem>
           </Form>
         </col>
       </Row>
@@ -78,8 +78,8 @@ export default {
     }
   },
   methods: {
-    test () {
-      console.log(111)
+    login () {
+      console.log(this.loginData)
       // this.show = true
       // this.$notify({
       //   // timeout: 1000,
