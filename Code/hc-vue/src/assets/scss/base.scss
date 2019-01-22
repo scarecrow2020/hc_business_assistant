@@ -15,16 +15,44 @@ html,body {
   height: 100%;
 }
 
-.display-flex {
-  display:flex;
-}
+// .layout {
+//   display: flex;
+//   flex-direction: column;
+// }
+// .layout.layout-horizontal {
+//   flex-direction: row;
+// }
+// .layout.layout-absolute {
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+// }
+// .layout>.layout-item {
+//   flex: 1 1;
+//   position: relative;
+//   overflow: hidden
+// }
+// .layout.align-center{
+//   align-items: center
+// }
 
+.display-flex {
+  display: flex;
+}
 .flex-center {
   align-items: center;
   text-align: center;
   width: 100%
 }
-
+.flex-right {
+  justify-content: flex-end
+}
+.flex-left {
+  justify-content: flex-start
+}
+.ml-10 {
+  margin-right: 10px;
+}
 .login-y {
   height: 200px;
 }
