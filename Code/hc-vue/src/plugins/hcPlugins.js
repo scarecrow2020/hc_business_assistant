@@ -1,14 +1,27 @@
 import Vue from 'vue'
 import { Notice } from 'iview'
 
-const notifyMsgs = {
-  save: '保存',
-  operate: '操作'
+const notify = (noticeType, options = { type: 'operate' }) => {
+  const notifyMsgs = {
+    save: '保存',
+    operate: '操作'
+  }
+  let title = null
+  if (typeof options === 'string') {
+    title = options
+  } else {
+    let msgSuffix = ['warning', 'error'].includes(noticeType) ? '失败' : '成功'
+    title = `${notifyMsgs[options.type]}${msgSuffix}`
+  }
+  Notice[noticeType]({
+    title: title,
+    ...options
+  })
 }
 
 const HcPlugin = {
   install (Vue) {
-    Vue.prototype.$notify = this.notify
+    Vue.prototype.$notify = this.notice
     /* eslint-disable no-extend-native */
     Array.prototype.remove = function (val) {
       var index = this.indexOf(val)
@@ -17,8 +30,6 @@ const HcPlugin = {
       }
     }
     // Vue.prototype.$openDialog = this.openDialog
-    // Vue.prototype.$notifyError = this.notifyError
-    // Vue.prototype.$notifySuccess = this.notifySuccess
     // Vue.prototype.$moment = moment
     // Vue.filter('monthFormat', (value) => {
     //   return moment(value).format('YYYY-MM')
@@ -33,20 +44,19 @@ const HcPlugin = {
     //   return integer + '.' + decimal
     // })
   },
-  notify (options = { msgType: 'operate' }) {
-    let [type, msgSuffix] = [options.type, null]
-    if (['warning', 'error'].includes(type)) {
-      msgSuffix = '失败'
-    } else {
-      msgSuffix = '成功'
-      if (!['success', 'info', 'open'].includes(type)) {
-        type = 'success'
-      }
+  notice: {
+    success: (options) => {
+      notify('success', options)
+    },
+    warning: (options = { type: 'operate' }) => {
+      notify('warning', options)
+    },
+    info: (options = { type: 'operate' }) => {
+      notify('info', options)
+    },
+    error: (options = { type: 'operate' }) => {
+      notify('error', options)
     }
-    Notice[type]({
-      title: `${notifyMsgs[options.msgType]}${msgSuffix}`,
-      ...options
-    })
   }
   // notify (options = {}) {
   //   return new Promise((resolve, reject) => {

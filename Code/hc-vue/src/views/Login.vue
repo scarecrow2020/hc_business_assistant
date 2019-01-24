@@ -38,8 +38,8 @@
             </FormItem>
             <FormItem>
               <div class="display-flex flex-right">
-              <Button type="success" class="ml-10" @click="login(true)">登录</Button>
-              <Button type="warning" @click="login">游客</Button>
+              <Button type="success" class="ml-10" @click="login(false)">登录</Button>
+              <Button type="warning" @click="login(true)">游客</Button>
               </div>
             </FormItem>
           </Form>
@@ -57,41 +57,36 @@ export default {
         userName: null,
         password: null
       },
-      showPsd: false,
-      snackbar: {
-        show: false,
-        message: null,
-        close: true
-      }
+      showPsd: false
     }
   },
   methods: {
-    login (isVisitor = false) {
-      // let params = { userName: 'visitor' }
-      // if (!isVisitor) {
-      //   params = this.loginData
-      //   if (!params.userName) {
-      //     this.$notify({ message: '用户名不能为空' })
-      //     return
-      //   }
-      //   if (!params.password || params.password.length < 7) {
-      //     this.$notify({ message: '密码不能少于7位' })
-      //     return
-      //   }
-      // }
-      // this.$axios.get('/login', { params }).then(({ data }) => {
-      //   if (data.success) {
-      //     this.$notify({
-      //       type: 'success',
-      //       message: '登录成功'
-      //     })
-      //     // this.snackbar.show = true
-      //     this.$store.commit('setUserInfo', data.result)
-      //     this.$router.push({ name: 'index' })
-      //   } else {
-      //     this.$notify({ message: data.msg })
-      //   }
-      // })
+    login (isVisitor) {
+      let params = { userName: 'visitor' }
+      if (!isVisitor) {
+        params = this.loginData
+        if (!params.userName) {
+          this.$notify.error({ title: '用户名不能为空' })
+          return
+        }
+        if (!params.password || params.password.length < 7) {
+          this.$notify({ message: '密码不能少于7位' })
+          return
+        }
+      }
+      this.$axios.get('/login', { params }).then(({ data }) => {
+        if (data.success) {
+          this.$notify({
+            type: 'success',
+            message: '登录成功'
+          })
+          // this.snackbar.show = true
+          this.$store.commit('setUserInfo', data.result)
+          this.$router.push({ name: 'index' })
+        } else {
+          this.$notify({ message: data.msg })
+        }
+      })
     }
   }
 }
