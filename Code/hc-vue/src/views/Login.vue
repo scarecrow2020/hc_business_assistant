@@ -22,9 +22,10 @@
               <hc-input placeholder="请输入用户名" prefix="ios-person" size="large" v-model="loginData.userName"></hc-input>
             </FormItem>
             <FormItem>
-              <hc-input placeholder="请输入密码" size="large" v-model="loginData.password" :type="showPsd ? 'text' : 'password'" @enter-click="login">
+              <!-- <hc-input placeholder="请输入密码" size="large" v-model="loginData.password" :type="showPsd ? 'text' : 'password'" @enter-click="login">
                 <Icon :type="showPsd ? 'md-eye' : 'ios-lock'" slot="prefix" @click.native="showPsd = !showPsd"></Icon>
-              </hc-input>
+              </hc-input> -->
+              <mu-text-field color="black" v-model="loginData.password" label="Password" :action-icon="showPsd ? 'visibility_off' : 'visibility'" :action-click="() => (showPsd = !showPsd)" :type="showPsd ? 'text' : 'password'"></mu-text-field>
               <!-- <Row type="flex" style="background-color:white;border-radius:3px">
                 <Col :span="22">
                   <Input placeholder="请输入密码" size="large" :type="showPsd ? 'text' : 'password'" v-model="loginData.password" clearable >
