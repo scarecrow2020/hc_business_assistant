@@ -31,7 +31,8 @@ module.exports = {
             transformAssetUrls: {
               'Avatar': 'src',
               'v-img': 'src',
-              'v-jumbotron': 'src'
+              'v-jumbotron': 'src',
+              'v-carousel-item': 'src'
             }
           })
           return options

@@ -1,8 +1,6 @@
 <template>
   <v-app>
-    <v-responsive max-height="300px">
-      <v-img :aspect-ratio="16/9" src="@/assets/imgs/7.jpg" gradient="to top, rgba(160, 90, 70, 0.85), rgba(30, 40, 30, 0.85)">
-      <v-toolbar dark color="bg-none elevation-0">
+    <v-toolbar dark color="bg-color">
       <v-toolbar-title class="headline">
         <span class="f-title-big">MZ Manager</span>
       </v-toolbar-title>
@@ -34,21 +32,9 @@
         </v-btn>
       </v-layout>
     </v-toolbar>
-    <v-flex xs8 offset-xs2 class="my-2">
-    <v-carousel  height="220">
-      <v-carousel-item
-        src="@/assets/imgs/1.png"
-      ></v-carousel-item>
-    </v-carousel>
-    </v-flex>
-      </v-img>
-    </v-responsive>
-    <v-content class="bg-color">
+    <v-content class="bgc-main">
       <router-view></router-view>
     </v-content>
-    <!-- <v-content class="pink">
-      <router-view></router-view>
-    </v-content> -->
     <v-footer app dark class="bg-color f-s-14">
       <v-spacer></v-spacer>
       <span>&copy; 2019-现在  MZ商家助手 All Rights Reserved</span>
