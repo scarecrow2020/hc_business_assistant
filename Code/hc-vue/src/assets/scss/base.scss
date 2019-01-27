@@ -1,13 +1,17 @@
 $border-color: #e3e3e3;
 $list-border: 1px solid $border-color;
 $bg-title: gainsboro;
-
-html,body {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+$color-main: #2c7a90;
+html {
+  overflow-y: auto;
 }
 
+.bg-color {
+  background-color: $color-main !important;
+}
+.bg-none {
+  background-color: rgba(0,0,0,0) !important;
+}
 .bg-img {
   background-image: url("../imgs/6.jpg")
 }
@@ -69,9 +73,6 @@ html,body {
 
 .align-center {
   text-align: center;
-}
-.bg-none{
-  background-color: rgba(0,0,0,0);
 }
 .bg {
   background-color: #12c2e9;

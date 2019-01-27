@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import './plugins/vuetify'
 import './plugins/museUi'
 import './plugins/hcPlugins'
 import './plugins/iview'

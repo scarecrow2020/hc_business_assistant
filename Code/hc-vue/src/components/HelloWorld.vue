@@ -12,7 +12,6 @@
           height="200"
         ></v-img>
       </v-flex>
-
       <v-flex mb-4>
         <h1 class="display-2 font-weight-bold mb-3">
           Welcome to Vuetify
@@ -23,13 +22,11 @@
           <a href="https://community.vuetifyjs.com" target="_blank">Discord Community</a>
         </p>
       </v-flex>
-
       <v-flex
         mb-5
         xs12
       >
         <h2 class="headline font-weight-bold mb-3">What's next?</h2>
-
         <v-layout justify-center>
           <a
             v-for="(next, i) in whatsNext"
@@ -42,13 +39,11 @@
           </a>
         </v-layout>
       </v-flex>
-
       <v-flex
         xs12
         mb-5
       >
         <h2 class="headline font-weight-bold mb-3">Important Links</h2>
-
         <v-layout justify-center>
           <a
             v-for="(link, i) in importantLinks"
@@ -61,13 +56,11 @@
           </a>
         </v-layout>
       </v-flex>
-
       <v-flex
         xs12
         mb-5
       >
         <h2 class="headline font-weight-bold mb-3">Ecosystem</h2>
-
         <v-layout justify-center>
           <a
             v-for="(eco, i) in ecosystem"
@@ -136,7 +129,6 @@ export default {
         text: 'Frequently Asked Questions',
         href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions'
       }
-
     ]
   })
 }
