@@ -29,7 +29,9 @@ module.exports = {
         .tap(options => {
           Object.assign(options, {
             transformAssetUrls: {
-              'Avatar': 'src'
+              'Avatar': 'src',
+              'v-img': 'src',
+              'v-jumbotron': 'src'
             }
           })
           return options

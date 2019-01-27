@@ -1,27 +1,26 @@
 import Vue from 'vue'
-import { Notice } from 'iview'
 
-const notify = (noticeType, options = { type: 'operate' }) => {
-  const notifyMsgs = {
-    save: '保存',
-    operate: '操作'
-  }
-  let title = null
-  if (typeof options === 'string') {
-    title = options
-  } else {
-    let msgSuffix = ['warning', 'error'].includes(noticeType) ? '失败' : '成功'
-    title = `${notifyMsgs[options.type]}${msgSuffix}`
-  }
-  Notice[noticeType]({
-    title: title,
-    ...options
-  })
-}
+// const notify = (noticeType, options = { type: 'operate' }) => {
+//   const notifyMsgs = {
+//     save: '保存',
+//     operate: '操作'
+//   }
+//   let title = null
+//   if (typeof options === 'string') {
+//     title = options
+//   } else {
+//     let msgSuffix = ['warning', 'error'].includes(noticeType) ? '失败' : '成功'
+//     title = `${notifyMsgs[options.type]}${msgSuffix}`
+//   }
+//   Notice[noticeType]({
+//     title: title,
+//     ...options
+//   })
+// }
 
 const HcPlugin = {
   install (Vue) {
-    Vue.prototype.$notify = this.notice
+    Vue.prototype.$notify = this.notify
     /* eslint-disable no-extend-native */
     Array.prototype.remove = function (val) {
       var index = this.indexOf(val)
@@ -44,85 +43,85 @@ const HcPlugin = {
     //   return integer + '.' + decimal
     // })
   },
-  notice: {
-    success: (options) => {
-      notify('success', options)
-    },
-    warning: (options = { type: 'operate' }) => {
-      notify('warning', options)
-    },
-    info: (options = { type: 'operate' }) => {
-      notify('info', options)
-    },
-    error: (options = { type: 'operate' }) => {
-      notify('error', options)
-    }
-  }
-  // notify (options = {}) {
-  //   return new Promise((resolve, reject) => {
-  //     const notify = new Vue({
-  //       render (h) {
-  //         // return h('hc-snackbar', {
-  //         //   props: { value: this.initParams }
-  //         // })
-  //         const close = h('v-btn', {
-  //           props: {
-  //             flat: true
-  //           },
-  //           on: {
-  //             click: () => { this.close() }
-  //           }
-  //         }, [h('v-icon', {}, 'cancel')])
-  //         return h('v-snackbar', {
-  //           props: this.props
-  //         }, [this.message, close])
-  //       },
-  //       data () {
-  //         let [messages, type = 'error'] = [{
-  //           error: '操作失败',
-  //           success: '操作成功'
-  //         }, options.color || options.type]
-  //         return {
-  //           props: {
-  //             value: true,
-  //             timeout: 3000,
-  //             top: true,
-  //             right: true,
-  //             'auto-height': true,
-  //             color: type,
-  //             ...options
-  //           },
-  //           message: options.message || messages[type]
-  //           // initParams: {
-  //           //   show: true,
-  //           //   ...options
-  //           // }
-  //         }
-  //       },
-  //       methods: {
-  //         close () {
-  //           this.$destroy()
-  //           let _parentElement = this.$el.parentNode
-  //           if (_parentElement) {
-  //             _parentElement.removeChild(this.$el)
-  //           }
-  //           this.$el.remove()
-  //         }
-  //       },
-  //       created () {
-  //         if (this.props.timeout) {
-  //           setTimeout(() => {
-  //             this.close()
-  //           }, this.props.timeout)
-  //         }
-  //       },
-  //       destroyed () {
-  //         // console.log('des')
-  //       }
-  //     }).$mount()
-  //     document.getElementById('app').appendChild(notify.$el)
-  //   })
+  // notice: {
+  //   success: (options) => {
+  //     notify('success', options)
+  //   },
+  //   warning: (options = { type: 'operate' }) => {
+  //     notify('warning', options)
+  //   },
+  //   info: (options = { type: 'operate' }) => {
+  //     notify('info', options)
+  //   },
+  //   error: (options = { type: 'operate' }) => {
+  //     notify('error', options)
+  //   }
   // }
+  notify (options = {}) {
+    return new Promise((resolve, reject) => {
+      const notify = new Vue({
+        render (h) {
+          // return h('hc-snackbar', {
+          //   props: { value: this.initParams }
+          // })
+          const close = h('v-btn', {
+            props: {
+              flat: true
+            },
+            on: {
+              click: () => { this.close() }
+            }
+          }, [h('v-icon', {}, 'cancel')])
+          return h('v-snackbar', {
+            props: this.props
+          }, [this.message, close])
+        },
+        data () {
+          let [messages, type = 'error'] = [{
+            error: '操作失败',
+            success: '操作成功'
+          }, options.color || options.type]
+          return {
+            props: {
+              value: true,
+              timeout: 3000,
+              top: true,
+              right: true,
+              'auto-height': true,
+              color: type,
+              ...options
+            },
+            message: options.message || messages[type]
+            // initParams: {
+            //   show: true,
+            //   ...options
+            // }
+          }
+        },
+        methods: {
+          close () {
+            this.$destroy()
+            let _parentElement = this.$el.parentNode
+            if (_parentElement) {
+              _parentElement.removeChild(this.$el)
+            }
+            this.$el.remove()
+          }
+        },
+        created () {
+          if (this.props.timeout) {
+            setTimeout(() => {
+              this.close()
+            }, this.props.timeout)
+          }
+        },
+        destroyed () {
+          // console.log('des')
+        }
+      }).$mount()
+      document.getElementById('app').appendChild(notify.$el)
+    })
+  }
   // openDialog (componentName, options, closeCallback) {
   //   return new Promise((resolve, reject) => {
   //     const dialog = new Vue({

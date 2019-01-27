@@ -1,10 +1,9 @@
 <template>
   <v-app>
     <!-- elevation-0 -->
-    <v-toolbar app dark class="bg-color"> 
+    <v-toolbar app dark class="bg-color">
       <v-toolbar-title class="headline ">
-        <span class="font-weight-black display-2 font-italic">MZ</span>
-        <span class="f-title-big ml-2"> Manager</span>
+        <span class="f-title-big ml-2">MZ Manager</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
@@ -27,13 +26,8 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  },
   data () {
     return {
       //
