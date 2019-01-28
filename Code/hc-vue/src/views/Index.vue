@@ -1,50 +1,57 @@
 <template>
   <v-app>
-    <v-responsive max-height="300px">
-      <v-img :aspect-ratio="16/9" src="@/assets/imgs/7.jpg" gradient="to top, rgba(160, 90, 70, 0.85), rgba(30, 40, 30, 0.85)">
-      <v-toolbar dark color="bg-none elevation-0">
-      <v-toolbar-title class="headline">
-        <span class="f-title-big">MZ Manager</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items>
-        <v-menu offset-y open-on-hover v-for="menu in menus" :key="menu.id">
-          <v-btn slot="activator" flat exact-active-class="teal lighten-1" :to="menu.path">{{ menu.name }}</v-btn>
-          <v-list subheader v-if="menu.subNavs">
-            <v-list-tile
-              v-for="(item, index) in menu.subNavs"
-              :key="index"
-              :to="item.path"
-            >
-              <v-list-tile-title>{{ item.name }}</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-menu>
-      </v-toolbar-items>
-      <v-layout align-center justify-end fill-height>
-        <v-avatar :size="55">
-          <img src="@/assets/imgs/head.png" alt="avatar">
-        </v-avatar>
-        <div class="ml-2">
-          <div class="text-xs-center"><strong>admin</strong></div>
-          <div class="text-xs-center"><strong>张三李四王五</strong></div>
-        </div>
-        <v-btn color="error" flat fab @click="logout">
-          <v-icon size="30">exit_to_app</v-icon>
-        </v-btn>
-      </v-layout>
-    </v-toolbar>
-    <v-flex xs8 offset-xs2 class="my-2">
-    <v-carousel  height="220">
-      <v-carousel-item
-        src="@/assets/imgs/1.png"
-      ></v-carousel-item>
-    </v-carousel>
-    </v-flex>
+    <v-responsive max-height="400px">
+      <v-img :aspect-ratio="16/9" max-height="400px" src="@/assets/imgs/bg2.jpg" gradient="to top, rgba(160, 90, 70, 0.85), rgba(30, 40, 30, 0.85)">
+        <v-toolbar dark color="bg-none elevation-0">
+          <v-toolbar-title class="headline">
+            <span class="f-title-big">MZ Manager</span>
+          </v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-items>
+            <v-menu offset-y open-on-hover v-for="menu in menus" :key="menu.id">
+              <v-btn slot="activator" flat exact-active-class="teal lighten-1" :to="menu.path">{{ menu.name }}</v-btn>
+              <v-list subheader v-if="menu.subNavs">
+                <v-list-tile
+                  v-for="(item, index) in menu.subNavs"
+                  :key="index"
+                  :to="item.path"
+                >
+                  <v-list-tile-title>{{ item.name }}</v-list-tile-title>
+                </v-list-tile>
+              </v-list>
+            </v-menu>
+          </v-toolbar-items>
+          <v-layout align-center justify-end fill-height>
+            <v-avatar :size="55">
+              <img src="@/assets/imgs/head.png" alt="avatar">
+            </v-avatar>
+            <div class="ml-2">
+              <div class="text-xs-center"><strong>admin</strong></div>
+              <div class="text-xs-center"><strong>张三李四王五</strong></div>
+            </div>
+            <v-btn color="error" flat fab @click="logout">
+              <v-icon size="30">exit_to_app</v-icon>
+            </v-btn>
+          </v-layout>
+        </v-toolbar>
+        <v-flex xs6 offset-xs3 class="my-3">
+          <v-carousel height="300">
+            <v-carousel-item
+            v-for="(item,i) in imgs"
+            :key="i"
+            :src="item.src"
+            reverse-transition="fade"
+            transition="fade"
+          ></v-carousel-item>
+            <!-- <v-carousel-item :src="img" v-for="(img, index) in imgs" :key="index"></v-carousel-item> -->
+          </v-carousel>
+        </v-flex>
       </v-img>
     </v-responsive>
     <v-content class="bg-color">
-      <router-view></router-view>
+      <!-- <v-img :aspect-ratio="16/9" width="auto" height="auto" src="@/assets/imgs/bg2.jpg" >
+      </v-img> -->
+      <!-- <router-view></router-view> -->
     </v-content>
     <!-- <v-content class="pink">
       <router-view></router-view>
@@ -135,7 +142,16 @@ export default {
   name: 'Index',
   data () {
     return {
-      menus: menus
+      menus: menus,
+      imgs: [{
+        src: require('@/assets/imgs/d1.jpg')
+      }, {
+        src: require('@/assets/imgs/d2.jpg')
+      }, {
+        src: require('@/assets/imgs/d3.jpg')
+      }, {
+        src: require('@/assets/imgs/d4.jpg')
+      }]
     }
   },
   methods: {
