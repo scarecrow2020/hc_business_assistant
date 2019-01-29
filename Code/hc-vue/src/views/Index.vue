@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-responsive max-height="400px">
-      <v-img :aspect-ratio="16/9" max-height="400px" src="@/assets/imgs/bg2.jpg" gradient="to top, rgba(160, 90, 70, 0.85), rgba(30, 40, 30, 0.85)">
+      <v-img :aspect-ratio="16/9" max-height="400px" src="@/assets/imgs/bg2.jpg" gradient="to top, rgba(160, 90, 70, 0.8), rgba(30, 40, 30, 0.8)">
         <v-toolbar dark color="bg-none elevation-0">
           <v-toolbar-title class="headline">
             <span class="f-title-big">MZ Manager</span>
@@ -36,26 +36,55 @@
         </v-toolbar>
         <v-flex xs6 offset-xs3 class="my-3">
           <v-carousel height="300">
-            <v-carousel-item
-            v-for="(item,i) in imgs"
-            :key="i"
-            :src="item.src"
-            reverse-transition="fade"
-            transition="fade"
-          ></v-carousel-item>
-            <!-- <v-carousel-item :src="img" v-for="(img, index) in imgs" :key="index"></v-carousel-item> -->
+            <v-carousel-item :src="img.src" v-for="(img, index) in imgs" :key="index" reverse-transition="fade" transition="fade"></v-carousel-item>
           </v-carousel>
         </v-flex>
       </v-img>
     </v-responsive>
-    <v-content class="bg-color">
-      <!-- <v-img :aspect-ratio="16/9" width="auto" height="auto" src="@/assets/imgs/bg2.jpg" >
-      </v-img> -->
-      <!-- <router-view></router-view> -->
+    <v-content>
+      <v-container>
+        <v-layout v-for="n in 4" :key="n" class="my-2">
+          <v-flex xs4 sm4 v-for="item in 4" :key="item" class="mx-2">
+            <v-card>
+              <v-img
+                class="white--text"
+                height="200px"
+                src="@/assets/imgs/l2.jpg"
+              >
+                <v-container fill-height fluid>
+                  <v-layout fill-height>
+                    <v-flex xs12 align-end flexbox>
+                      <span class="headline">特惠旅游</span>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-img>
+              <v-card-title>
+                <div>
+                  <span class="grey--text">NO.{{item + 4 * (n - 1)}}</span><br>
+                  <span>未知地点</span><br>
+                  <span>外太空 费用自付</span>
+                </div>
+              </v-card-title>
+              <v-card-actions>
+                <v-btn flat color="orange">购买</v-btn>
+                <v-btn flat color="orange">详情</v-btn>
+                <v-spacer></v-spacer>
+                <v-btn icon>
+                  <v-icon>favorite</v-icon>
+                </v-btn>
+                <v-btn icon>
+                  <v-icon>bookmark</v-icon>
+                </v-btn>
+                <v-btn icon>
+                  <v-icon>share</v-icon>
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
     </v-content>
-    <!-- <v-content class="pink">
-      <router-view></router-view>
-    </v-content> -->
     <v-footer app dark class="bg-color f-s-14">
       <v-spacer></v-spacer>
       <span>&copy; 2019-现在  MZ商家助手 All Rights Reserved</span>
@@ -151,7 +180,8 @@ export default {
         src: require('@/assets/imgs/d3.jpg')
       }, {
         src: require('@/assets/imgs/d4.jpg')
-      }]
+      }],
+      fab: false
     }
   },
   methods: {
