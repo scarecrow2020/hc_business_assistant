@@ -35,7 +35,7 @@ public class MybatisConfig {
     @Bean
     public PaginationInterceptor paginationInterceptor() {
         PaginationInterceptor page = new PaginationInterceptor();
-        page.setDialectType("mysql");
+//        page.setDialectType("mysql");
 //        page.setLocalPage(true);//自动识别数据库类型
         return page;
     }
