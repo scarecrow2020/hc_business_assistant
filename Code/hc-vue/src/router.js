@@ -21,18 +21,25 @@ export default new Router({
     name: 'index',
     component: Index
   }, {
+  //   path: '/settings',
+  //   component: User,
+  //   redirect: '/settings/user',
+  //   children: [{
+  //     path: 'user',
+  //     name: 'user',
+  //     component: User
+  //   }, {
+  //     path: 'system',
+  //     name: 'system',
+  //     component: System
+  //   }]
+  // }, {
     path: '/settings',
-    component: Index,
-    redirect: '/settings/user',
-    children: [{
-      path: 'user',
-      name: 'user',
-      component: User
-    }, {
-      path: 'system',
-      name: 'system',
-      component: System
-    }]
+    alias: '/settings/user',
+    component: User
+  }, {
+    path: '/settings/system',
+    component: System
   }, {
     path: '/test',
     name: 'test',
