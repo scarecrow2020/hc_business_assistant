@@ -1,8 +1,41 @@
 <template>
   <v-app>
+    <!-- color="bg-none elevation-0" -->
+      <v-toolbar class="bg-color" app dark>
+        <v-toolbar-title class="headline">
+          <span class="f-title-big">MZ Manager</span>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items>
+          <v-menu offset-y open-on-hover v-for="menu in menus" :key="menu.id">
+            <v-btn slot="activator" flat exact-active-class="teal lighten-1" :to="menu.path">{{ menu.name }}</v-btn>
+            <v-list subheader v-if="menu.subNavs">
+              <v-list-tile
+                v-for="(item, index) in menu.subNavs"
+                :key="index"
+                :to="item.path"
+              >
+                <v-list-tile-title>{{ item.name }}</v-list-tile-title>
+              </v-list-tile>
+            </v-list>
+          </v-menu>
+        </v-toolbar-items>
+        <v-layout align-center justify-end fill-height>
+          <v-avatar :size="55">
+            <img src="@/assets/imgs/head.png" alt="avatar">
+          </v-avatar>
+          <div class="ml-2">
+            <div class="text-xs-center"><strong>admin</strong></div>
+            <div class="text-xs-center"><strong>张三李四王五</strong></div>
+          </div>
+          <v-btn color="error" flat fab @click="logout">
+            <v-icon size="30">exit_to_app</v-icon>
+          </v-btn>
+        </v-layout>
+      </v-toolbar>
     <v-responsive max-height="400px">
       <v-img :aspect-ratio="16/9" max-height="400px" src="@/assets/imgs/bg2.jpg" gradient="to top, rgba(160, 90, 70, 0.8), rgba(30, 40, 30, 0.8)">
-        <v-toolbar dark color="bg-none elevation-0">
+        <!-- <v-toolbar dark color="bg-none elevation-0">
           <v-toolbar-title class="headline">
             <span class="f-title-big">MZ Manager</span>
           </v-toolbar-title>
@@ -33,7 +66,8 @@
               <v-icon size="30">exit_to_app</v-icon>
             </v-btn>
           </v-layout>
-        </v-toolbar>
+        </v-toolbar> -->
+        <div style="height:64px"></div>
         <v-flex xs6 offset-xs3 class="my-3">
           <v-carousel height="300">
             <v-carousel-item :src="img.src" v-for="(img, index) in imgs" :key="index" reverse-transition="fade" transition="fade"></v-carousel-item>

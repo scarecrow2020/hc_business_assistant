@@ -1,4 +1,5 @@
 <template>
+<v-app>
   <Layout class="bg-img fill-height">
     <Header class="bgc-none"></Header>
     <Content style="display:flex">
@@ -63,6 +64,7 @@
     </Content>
     <Footer class="align-center bgc-none f-white">&copy;2019 Copyright HC商家助手 www.hcmanager.com</Footer>
   </Layout>
+  </v-app>
 </template>
 <script>
 export default {
