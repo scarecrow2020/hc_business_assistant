@@ -23,10 +23,18 @@ public class User {
         return userService.page(new Page(page, size));
     }
 
+//    @RequestMapping("/save")
+//    public Object save(@RequestParam SysUser user, Integer a, @RequestParam HashMap<String, String> b) {
+//        user = new SysUser();
+//        user.setName("123465");
+//        return userService.save(user);
+//    }
+
     @RequestMapping("/save")
-    public Object save(@RequestParam SysUser user, Integer a, @RequestParam HashMap<String, String> b) {
-        System.out.println(user);
-        return user;
+    public Object save() {
+        SysUser user = new SysUser();
+        user.setName("123465");
+        return userService.save(user);
     }
 
 }

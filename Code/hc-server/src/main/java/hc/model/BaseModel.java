@@ -1,5 +1,8 @@
 package hc.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -7,8 +10,9 @@ import java.util.Date;
 @MappedSuperclass
 public abstract class BaseModel implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Access(AccessType.PROPERTY)
+//    @TableId(type = IdType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Access(AccessType.PROPERTY)
     private Long id;
 
     @Column(name = "create_date")
