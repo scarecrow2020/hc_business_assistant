@@ -79,7 +79,7 @@
       <v-container>
         <v-layout v-for="n in 4" :key="n" class="my-2">
           <v-flex xs4 sm4 v-for="item in 4" :key="item" class="mx-2">
-            <v-card>
+            <v-card >
               <v-img
                 class="white--text"
                 height="200px"
@@ -101,8 +101,8 @@
                 </div>
               </v-card-title>
               <v-card-actions>
-                <v-btn flat color="orange">购买</v-btn>
-                <v-btn flat color="orange">详情</v-btn>
+                <v-btn flat color="orange" fab small>购买</v-btn>
+                <v-btn flat color="orange" fab small>详情</v-btn>
                 <v-spacer></v-spacer>
                 <v-btn icon>
                   <v-icon>favorite</v-icon>
