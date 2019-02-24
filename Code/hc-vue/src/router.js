@@ -6,6 +6,7 @@ import Test from './views/Test.vue'
 import User from './views/settings/User.vue'
 import System from './views/settings/System.vue'
 import SignIn from './views/SignIn.vue'
+import BackIndex from './views/BackIndex.vue'
 
 Vue.use(Router)
 
@@ -20,6 +21,10 @@ export default new Router({
     path: '/index',
     name: 'index',
     component: Index
+  }, {
+    path: '/backIndex',
+    name: 'backIndex',
+    component: BackIndex
   }, {
   //   path: '/settings',
   //   component: User,

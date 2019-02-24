@@ -66,7 +66,7 @@ export default {
       //       message: '登录成功'
       //     })
       this.$store.commit('setUserInfo', { name: 'visitor', loginUuid: 'aaa' })
-      this.$router.push({ name: 'index' })
+      this.$router.push({ name: 'backIndex' })
       //   } else {
       //     this.$notify({ message: data.msg })
       //   }
