@@ -59,11 +59,21 @@
       <v-spacer></v-spacer>
     </v-toolbar>
     <v-content class="bg-main">
+      <v-container fluid >
+        <!-- <router-view></router-view> -->
+        <v-layout align-space-around column>
+          <v-layout align-space-around column>
+            123
+            525
+          </v-layout>
+        </v-layout>
+      </v-container>
       <v-container fluid fill-height>
         <!-- <router-view></router-view> -->
-        <v-layout align-center justify-center>
-          <v-flex xs10>
-            <v-card>
+        <v-layout align-space-around column>
+          <v-flex xs10 class="pink">
+            1
+            <!-- <v-card>
               <v-card-text>
                 123132
               </v-card-text>
@@ -72,57 +82,9 @@
                 <v-btn flat>Cancel</v-btn>
                 <v-btn flat color="primary">Submit</v-btn>
               </v-card-actions>
-            </v-card>
-            <v-card>
-              <v-card-text>
-                123132
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn flat>Cancel</v-btn>
-                <v-btn flat color="primary">Submit</v-btn>
-              </v-card-actions>
-            </v-card>
-            <v-card>
-              <v-card-text>
-                123132
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn flat>Cancel</v-btn>
-                <v-btn flat color="primary">Submit</v-btn>
-              </v-card-actions>
-            </v-card>
-            <v-card>
-              <v-card-text>
-                123132
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn flat>Cancel</v-btn>
-                <v-btn flat color="primary">Submit</v-btn>
-              </v-card-actions>
-            </v-card>
-            <v-card>
-              <v-card-text>
-                123132
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn flat>Cancel</v-btn>
-                <v-btn flat color="primary">Submit</v-btn>
-              </v-card-actions>
-            </v-card>
-            <v-card>
-              <v-card-text>
-                123132
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn flat>Cancel</v-btn>
-                <v-btn flat color="primary">Submit</v-btn>
-              </v-card-actions>
-            </v-card>
+            </v-card> -->
+          </v-flex>
+          <v-flex xs10 class="green">
             <v-card>
               <v-card-text>
                 123132
