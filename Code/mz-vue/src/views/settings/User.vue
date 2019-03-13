@@ -14,7 +14,7 @@
           hide-details
         ></v-text-field>
         <!-- <v-spacer></v-spacer> -->
-        <v-btn color="info">新增</v-btn>
+        <v-btn color="info" @click="editPage = !editPage">新增</v-btn>
         <v-btn color="error">删除</v-btn>
       </v-card-title>
       <v-data-table
@@ -60,6 +60,22 @@
         </v-alert>
       </v-data-table>
     </v-card>
+    <v-navigation-drawer
+        v-model="editPage"
+        right
+        width="500"
+        temporary
+        stateless
+        app
+      >
+      <v-layout column fill-height>
+        <v-spacer></v-spacer>
+        <!-- <v-layout row> -->
+          <!-- <v-spacer></v-spacer> -->
+          <v-btn @click="editPage = false" color="error">关闭</v-btn>
+        <!-- </v-layout> -->
+      </v-layout>
+    </v-navigation-drawer>
   </div>
     <!-- <v-container fluid >
         <v-layout align-space-around column>
@@ -289,6 +305,7 @@ const tableData = [
   name: 'User'
 })
 export default class Home extends Vue {
+  editPage: boolean = false
   filterParams: any = {
     queryName: null,
     role: [],
