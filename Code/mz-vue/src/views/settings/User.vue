@@ -257,7 +257,7 @@ const statisticsData = [{
 }]
 const tableHeaders = [
   { text: '序号', value: 'index', sortable: false },
-  { text: '性名', align: 'left', value: 'name', width: '300px'},
+  { text: '性名', align: 'left', value: 'name', width: '300px' },
   { text: '用户名', value: 'userName' },
   { text: '身份证', value: 'cardCode' },
   { text: '电话', value: 'phone' },

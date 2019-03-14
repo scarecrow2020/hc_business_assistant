@@ -1,0 +1,157 @@
+<template>
+<v-card>
+    <v-card-title>
+      Nutrition
+      <v-spacer></v-spacer>
+      <v-text-field
+        v-model="search"
+        append-icon="search"
+        label="Search"
+        single-line
+        hide-details
+      ></v-text-field>
+    </v-card-title>
+    <v-data-table
+      v-model="selected"
+      select-all
+      :headers="headers"
+      :items="items"
+      no-data-text="没有数据。。。"
+      no-results-text="没有搜索到数据"
+      :pagination.sync="pagination"
+      :loading="loading"
+      :expand="expand"
+      :search="search"
+      :rows-per-page-items="[10, 25]"
+      rows-per-page-text=""
+      :hide-actions="false"
+    >
+      <template v-slot:headers="props">
+        <tr>
+          <th>
+            <v-checkbox
+              :input-value="props.all"
+              :indeterminate="props.indeterminate"
+              primary
+              hide-details
+              @click.stop="toggleAll"
+            ></v-checkbox>
+          </th>
+          <th
+            v-for="header in props.headers"
+            :key="header.text"
+            :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+            @click="changeSort(header.value)"
+          >
+            <v-icon small>arrow_upward</v-icon>
+            {{ header.text }}
+            <!-- <v-tooltip bottom>
+              <template v-slot:activator="{ on }">
+                <span v-on="on">
+                  {{ header.text }}
+                </span>
+              </template>
+              <span>
+                {{ header.text }}
+              </span>
+            </v-tooltip> -->
+          </th>
+        </tr>
+      </template>
+      <template slot="items" slot-scope="props">
+        <tr @click="props.expanded = !props.expanded">
+          <td style="max-width:20px">
+            <v-checkbox
+              v-model="props.selected"
+              primary
+              hide-details
+            ></v-checkbox>
+          </td>
+          <td>{{ props.index + 1 }}</td>
+          <td>{{ props.item.name }}</td>
+          <td class="text-xs-right">{{ props.item.phone }}</td>
+          <td class="text-xs-right">{{ props.item.address }}</td>
+          <td class="text-xs-right">{{ props.item.email }}</td>
+          <td class="text-xs-right">{{ props.item.sex }}</td>
+          <td class="text-xs-right">{{ props.item.age }}</td>
+          <td class="justify-center layout px-0">
+            <v-icon
+              small
+              class="mr-2"
+            >
+              edit
+            </v-icon>
+            <v-icon
+              small
+            >
+              delete
+            </v-icon>
+          </td>
+        </tr>
+      </template>
+      <!-- <v-spacer slot="no-data" style="height:200px;text-align:center;line-height:1" class="error">aa</v-spacer> -->
+      <!-- <v-flex slot="no-data">
+        没有数据
+      </v-flex> -->
+      <!-- <div slot="actions-prepend">start</div> -->
+      <template v-slot:pageText="props">
+        当前条数 {{ props.pageStart }} - {{ props.pageStop }} 共 {{ props.itemsLength }} 条
+      </template>
+      <div slot="actions-append">actions-append</div>
+      <div slot="actions-prepend">actions-prepend</div>
+      <v-alert v-slot:no-results :value="true" color="error" icon="warning">
+        Your search for "{{ search }}" found no results.
+      </v-alert>
+      <!-- <v-alert slot="no-results" :value="false" color="error" icon="warning">
+        <Button type="primary">Primary</Button>
+        Your search for "111" found no results.
+      </v-alert> -->
+      <template v-slot:expand="props">
+        <v-card flat>
+          <v-card-text>Peek-a-boo!</v-card-text>
+        </v-card>
+      </template>
+      <template v-slot:footer>
+        <td :colspan="headers.length + 1">
+          <strong>This is an extra footer</strong>
+        </td>
+      </template>
+    </v-data-table>
+  </v-card>
+</template>
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
+@Component({
+  name: 'MzTable'
+})
+export default class MzTable extends Vue {
+  @Prop({ type: Array, default: () => [] }) readonly items!: Array<Object>
+  @Prop({ type: Array, default: () => [] }) readonly headers!: Array<Object>
+  selected: Array<Object> = []
+  toggleAll () {
+    if (this.selected.length) this.selected = []
+    else this.selected = this.items.slice()
+    console.log(this.selected)
+  }
+
+  changeSort (column: string) {
+    if (this.pagination.sortBy === column) {
+      this.pagination.descending = !this.pagination.descending
+    } else {
+      this.pagination.sortBy = column
+      this.pagination.descending = false
+    }
+  }
+  search = ''
+  loading = false
+  expand = false
+  pagination = {
+    sortBy: 'name',
+    descending: false
+  }
+
+  created () {
+    // console.log(this.items)
+  }
+}
+</script>
