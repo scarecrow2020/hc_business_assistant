@@ -3,8 +3,6 @@
     <v-card slot="main" style="width: 100%">
       <v-card-title>
         <!-- <hc-chip v-model="filterParams" :data="filterItems" @clear="filterChange"></hc-chip> -->
-        <h2>人员设置</h2>
-        <v-spacer></v-spacer>
         <v-text-field
           class="gird-search"
           v-model="filterParams.queryName"
@@ -13,7 +11,7 @@
           single-line
           hide-details
         ></v-text-field>
-        <!-- <v-spacer></v-spacer> -->
+        <v-spacer></v-spacer>
         <v-btn color="info" @click="editPage = !editPage">新增</v-btn>
         <v-btn color="error">删除</v-btn>
       </v-card-title>
@@ -48,7 +46,10 @@
           <td class="text-xs-right">{{ props.item.age }}</td>
           <td class="text-xs-right">{{ props.item.birthday }}</td>
         </template>
-        <v-flex slot="no-data">no data</v-flex>
+        <!-- <v-spacer slot="no-data" style="height:200px;text-align:center;line-height:1" class="error">aa</v-spacer> -->
+        <!-- <v-flex slot="no-data">
+          没有数据
+        </v-flex> -->
         <!-- <div slot="actions-prepend">start</div> -->
         <template slot="pageText" slot-scope="props">
           当前条数 {{ props.pageStart }} - {{ props.pageStop }} 共 {{ props.itemsLength }} 条
@@ -256,7 +257,7 @@ const statisticsData = [{
 }]
 const tableHeaders = [
   { text: '序号', value: 'index', sortable: false },
-  { text: '性名', align: 'left', value: 'name', width: '300px' },
+  { text: '性名', align: 'left', value: 'name', width: '300px'},
   { text: '用户名', value: 'userName' },
   { text: '身份证', value: 'cardCode' },
   { text: '电话', value: 'phone' },

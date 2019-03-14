@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer width="260" stateless value="true" :mini-variant.sync="drawerMini" fixed app>
+    <v-navigation-drawer width="240" stateless value="true" :mini-variant.sync="drawerMini" fixed app class="bg-main" dark>
       <v-toolbar flat class="transparent">
         <v-list class="pa-0">
           <v-list-tile avatar>
@@ -26,11 +26,11 @@
             </v-list-tile-action>
             <v-list-tile-title>{{ menu.name }}</v-list-tile-title>
           </v-list-tile>
-          <v-list-group :prepend-icon="menu.icon || 'view_list'" v-model="menu.expand" no-action v-else :key="menu.id">
+          <v-list-group :prepend-icon="menu.icon || 'view_list'" v-model="menu.expand" no-action v-else :key="menu.id" active-class="info--text">
             <v-list-tile slot="activator">
               <v-list-tile-title>{{ menu.name }}</v-list-tile-title>
             </v-list-tile>
-            <v-list-tile v-for="subMenu in menu.subMenus" :key="subMenu.id">
+            <v-list-tile v-for="subMenu in menu.subMenus" :key="subMenu.id" :to="{path: subMenu.path || '/test'}" active-class="info">
               <v-list-tile-action>
                 <v-icon v-text="subMenu.icon || 'folder_open'"></v-icon>
               </v-list-tile-action>
@@ -64,7 +64,7 @@
         </v-btn>
       </v-layout>
     </v-toolbar>
-    <v-content class="bg-main">
+    <v-content>
       <router-view></router-view>
     </v-content>
     <!-- <v-footer app></v-footer> -->

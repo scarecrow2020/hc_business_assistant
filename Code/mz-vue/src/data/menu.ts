@@ -62,18 +62,18 @@ const menus = [{
   id: '6',
   name: '设置',
   icon: 'settings',
-  path: '/settings/user',
+  path: '/index/user',
   expand: true,
   subMenus: [{
     id: '6-2',
     name: '系统设置',
     icon: 'airplay', // settings_applications
-    path: '/settings/system'
+    path: '/index/system'
   }, {
     id: '6-3',
     name: '人员管理',
     icon: 'supervisor_account',
-    path: '/settings/user'
+    path: '/index/user'
   }]
 }]
 export default menus

@@ -1,4 +1,9 @@
-$bg-main: rgb(245, 245, 245);
+$bg-content: rgb(245, 245, 245);
+$bg-main: #1e5a6b;
+
+.bg-main {
+  background-color: $bg-main !important;
+}
 
 .bg-content {
   background-color: $bg-main !important;
