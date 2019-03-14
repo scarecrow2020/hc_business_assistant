@@ -1,7 +1,7 @@
 <template>
 <v-card>
     <v-card-title>
-      Nutrition {{total}}
+      Nutrition {{total}} {{search}} {{tableData}}
       <v-divider
           class="mx-2"
           inset
@@ -30,7 +30,7 @@
       :rows-per-page-items="[2, 4]"
       rows-per-page-text=""
       :hide-actions="false"
-      :total-items="total"
+      @filter="filter"
     >
       <template v-slot:headers="props">
         <tr>
@@ -148,7 +148,7 @@ export default class MzTable extends Vue {
       this.pagination.descending = false
     }
   }
-  search = null
+  search: string = ''
   loading = false
   expand = false
   pagination: any = {
@@ -200,7 +200,7 @@ export default class MzTable extends Vue {
       if (rowsPerPage > 0) {
         items = items.slice((page - 1) * rowsPerPage, page * rowsPerPage)
       }
-
+      // this.pagination.totalItems = total
       setTimeout(() => {
         this.loading = false
         resolve({
@@ -234,13 +234,22 @@ export default class MzTable extends Vue {
   }
 
   getDesserts () {
-    return [
+    let items = [
          { id: 26, name: 'ZZZ', age: '123' },
       { id: 27, name: '孙行者', age: '123' },
       { id: 28, name: '行者孙', age: '123' },
       { id: 29, name: '者行孙', age: '123' },
       { id: 30, name: '孙悟空', age: '1234' }
     ]
+    if (this.search) {
+      // console.log(items.filter(item => item.name.indexOf(this.search) > -1))
+      return items.filter(item => item.name.indexOf(this.search) > -1)
+    }
+    return items
+  }
+
+  filter(item: object, search: string) {
+    console.log(item, search)
   }
 }
 </script>
