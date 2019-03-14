@@ -1,7 +1,12 @@
 <template>
 <v-card>
     <v-card-title>
-      Nutrition
+      Nutrition {{total}}
+      <v-divider
+          class="mx-2"
+          inset
+          vertical
+        ></v-divider>
       <v-spacer></v-spacer>
       <v-text-field
         v-model="search"
@@ -15,16 +20,17 @@
       v-model="selected"
       select-all
       :headers="headers"
-      :items="items"
+      :items="tableData"
       no-data-text="没有数据。。。"
       no-results-text="没有搜索到数据"
       :pagination.sync="pagination"
       :loading="loading"
       :expand="expand"
       :search="search"
-      :rows-per-page-items="[10, 25]"
+      :rows-per-page-items="[2, 4]"
       rows-per-page-text=""
       :hide-actions="false"
+      :total-items="total"
     >
       <template v-slot:headers="props">
         <tr>
@@ -95,7 +101,7 @@
       </v-flex> -->
       <!-- <div slot="actions-prepend">start</div> -->
       <template v-slot:pageText="props">
-        当前条数 {{ props.pageStart }} - {{ props.pageStop }} 共 {{ props.itemsLength }} 条
+        {{props}}当前条数 {{ props.pageStart }} - {{ props.pageStop }} 共 {{ props.itemsLength }} 条
       </template>
       <div slot="actions-append">actions-append</div>
       <div slot="actions-prepend">actions-prepend</div>
@@ -120,14 +126,14 @@
   </v-card>
 </template>
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 @Component({
   name: 'MzTable'
 })
 export default class MzTable extends Vue {
-  @Prop({ type: Array, default: () => [] }) readonly items!: Array<Object>
-  @Prop({ type: Array, default: () => [] }) readonly headers!: Array<Object>
-  selected: Array<Object> = []
+  @Prop({ type: Array, default: () => [] }) readonly items!: Array<object>
+  @Prop({ type: Array, default: () => [] }) readonly headers!: Array<object>
+  selected: Array<object> = []
   toggleAll () {
     if (this.selected.length) this.selected = []
     else this.selected = this.items.slice()
@@ -142,16 +148,99 @@ export default class MzTable extends Vue {
       this.pagination.descending = false
     }
   }
-  search = ''
+  search = null
   loading = false
   expand = false
-  pagination = {
-    sortBy: 'name',
-    descending: false
+  pagination: any = {
+    // sortBy: 'name'
+    // descending: false,
+    // page: 1,
+    // rowsPerPage: 2,
+    // totalItems: 5
+  }
+  total = 0
+  tableData: any = []
+
+  mounted () {
+    // this.tableData = [
+    //   { id: 26, name: 'ZZZ', age: '123' },
+    //   { id: 27, name: '孙行者', age: '123' },
+    //   { id: 28, name: '行者孙', age: '123' },
+    //   { id: 29, name: '者行孙', age: '123' },
+    //   { id: 30, name: '孙悟空', age: '1234' }
+    // ]
+    // this.total = 10
+  }
+
+  getDataFromApi () {
+    this.loading = true
+    return new Promise((resolve, reject) => {
+      const { sortBy, descending, page, rowsPerPage } = this.pagination
+
+      let items = this.getDesserts()
+      const total = items.length
+
+      if (this.pagination.sortBy) {
+        items = items.sort((a: any, b: any) => {
+          const sortA = a[sortBy]
+          const sortB = b[sortBy]
+
+          if (descending) {
+            if (sortA < sortB) return 1
+            if (sortA > sortB) return -1
+            return 0
+          } else {
+            if (sortA < sortB) return -1
+            if (sortA > sortB) return 1
+            return 0
+          }
+        })
+      }
+
+      if (rowsPerPage > 0) {
+        items = items.slice((page - 1) * rowsPerPage, page * rowsPerPage)
+      }
+
+      setTimeout(() => {
+        this.loading = false
+        resolve({
+          items,
+          total
+        })
+      }, 1000)
+    })
   }
 
   created () {
+    // this.tableData = [
+    //   { id: 26, name: 'ZZZ', age: '123' },
+    //   { id: 27, name: '孙行者', age: '123' },
+    //   { id: 28, name: '行者孙', age: '123' },
+    //   { id: 29, name: '者行孙', age: '123' },
+    //   { id: 30, name: '孙悟空', age: '1234' }
+    // ]
+    // this.total = 10
     // console.log(this.items)
+  }
+
+  @Watch('pagination', { deep: true })
+  onPaginationChange(val: any, oldVal: any) {
+    console.log(val, oldVal)
+    this.getDataFromApi()
+      .then((data: any) => {
+        this.tableData = data.items
+        this.total = data.total
+      })
+  }
+
+  getDesserts () {
+    return [
+         { id: 26, name: 'ZZZ', age: '123' },
+      { id: 27, name: '孙行者', age: '123' },
+      { id: 28, name: '行者孙', age: '123' },
+      { id: 29, name: '者行孙', age: '123' },
+      { id: 30, name: '孙悟空', age: '1234' }
+    ]
   }
 }
 </script>

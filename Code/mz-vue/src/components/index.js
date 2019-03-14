@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import MzTable from './MzTable'
+import MzTable1 from './MzTable1'
 
 const components = {
-  MzTable
+  MzTable,
+  MzTable1
 }
 
 Object.keys(components).forEach(key => {
