@@ -26,7 +26,7 @@
         <th
           v-for="header in props.headers"
           :key="header.text"
-          :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '', `text-xs-${header.align || 'right'}`]"
+          :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
           @click="changeSort(header.value)"
         >
           <v-icon small>arrow_upward</v-icon>
@@ -47,11 +47,7 @@
     <template slot="items" slot-scope="props">
       <tr @click="props.expanded = !props.expanded">
         <td v-if="!hideSelect">
-          <v-checkbox
-            v-model="props.selected"
-            primary
-            hide-details
-          ></v-checkbox>
+          <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>
         </td>
         <td>{{ props.index + 1 }}</td>
         <td>{{ props.item.name }}</td>
