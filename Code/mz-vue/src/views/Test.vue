@@ -70,11 +70,22 @@ const tableData = [
 @Component({
   name: 'Test'
 })
+
 export default class Test extends Vue {
   tableData: Array<Object> = tableData
   tableHeaders: Array<Object> = tableHeaders
   tableParams = {
     search: null
   }
+
+  created () {
+    console.log(11111)
+    this.axios.get('/aaa').then((response:any) => {
+      console.log(response)
+    }).catch((err: any) => {
+      console.log(err)
+    })
+  }
 }
+
 </script>
