@@ -1,21 +1,19 @@
 import Vue from 'vue'
-import './plugins/axios'
 import './plugins/vuetify'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import './assets/scss'
 import './components'
-import axios from 'axios'
+import Component from 'vue-class-component'
+
+Component.registerHooks([
+  'beforeRouteEnter',
+  'beforeRouteLeave',
+  'beforeRouteUpdate'
+])
 
 Vue.config.productionTip = false
-
-Vue.prototype.axios = axios
-declare module "vue/types/vue" {
-  interface Vue {
-    axios: any;
-  }
-}
 
 new Vue({
   router,

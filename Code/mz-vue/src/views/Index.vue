@@ -38,6 +38,15 @@
             </v-list-tile>
           </v-list-group>
         </template>
+        <v-list-tile :to="{name: 'Index.test', params: {id:1,name:'abc'}}">
+          <v-list-tile-title>test</v-list-tile-title>
+        </v-list-tile>
+        <v-list-tile to="/index/test/2/type/xyz">
+          <v-list-tile-title>routePath</v-list-tile-title>
+        </v-list-tile>
+        <v-list-tile @click="goto">
+          <v-list-tile-title>routerFuc</v-list-tile-title>
+        </v-list-tile>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar app class="elevation-0">
@@ -89,5 +98,15 @@ export default class Home extends Vue {
     console.log('test')
   }
   logout () {}
+  goto () {
+    this.$router.push('/index/test/3/type/sc', () => {
+      console.log('jump success', this.drawerMini)
+    }, () => {
+      console.log('jump stop')
+    })
+  }
+  created () {
+    console.log(this.$route)
+  }
 }
 </script>

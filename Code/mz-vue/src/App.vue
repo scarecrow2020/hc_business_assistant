@@ -1,5 +1,8 @@
 <template>
-  <router-view/>
+  <v-app>
+    <router-view name="viewTwo"></router-view>
+    <router-view></router-view>
+  </v-app>
   <!-- <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">

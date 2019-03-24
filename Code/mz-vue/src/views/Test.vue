@@ -1,6 +1,23 @@
 <template>
   <v-app>test page
-    <v-card class="elevation-0">
+    <input :value="test" @input="handler" />
+    {{ test }} {{html}}
+    <!-- <todo-item1 v-bind.sync="a">
+      默认slot的值
+      <template #one="slotProps">
+        <span>slot1{{slotProps}}</span>
+      </template>
+      <template v-slot:two>
+        <span>slot2</span>
+      </template>
+    </todo-item1> -->
+    <v-btn @click="testMethod">{{a.c}}</v-btn>
+    <!-- <todo-item :todo-item="a.todo"></todo-item> -->
+    <!-- <base-checkbox v-model="a.c"></base-checkbox> -->
+    <render-component message="s-msg" a="a" b="b">
+      <template #default="{text}">{{text}}</template>
+    </render-component>
+    <!-- <v-card class="elevation-0">
       <v-card-title>
         Nutrition
         <v-divider
@@ -17,13 +34,17 @@
           hide-details
         ></v-text-field>
       </v-card-title>
-    </v-card>
-    <mz-table :items="tableData" :headers="tableHeaders" :params="tableParams"></mz-table>
+    </v-card> -->
+    <!-- <mz-table :items="tableData" :headers="tableHeaders" :params="tableParams"></mz-table> -->
   </v-app>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Provide } from 'vue-property-decorator'
 
+import { mixins } from 'vue-class-component'
+import $axios from '../plugins/axios'
+import test1 from './Test1.vue'
+import Test1 from './Test1.vue';
 const tableHeaders = [
   { text: '序号', value: 'index', sortable: false },
   { text: '性名', align: 'center', value: 'name', width: '300px', class: 'green--text' },
@@ -66,25 +87,77 @@ const tableData = [
   { id: 29, name: '者行孙', age: '123' },
   { id: 30, name: '孙悟空', age: '1234' }
 ]
+Vue.component('base-checkbox', {
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
+  props: {
+    checked: Boolean
+  },
+  template: `
+    <input
+      type="checkbox"
+      :checked="checked"
+      @change="$emit('change', $event.target.checked)"
+    >
+  `
+})
+
+const aa = Vue.extend({
+  data () {
+    return {
+      bbba: 'bbba'
+    }
+  }
+})
 
 @Component({
   name: 'Test'
 })
+export default class Test extends mixins(aa) {
+  @Provide('cc') testProvide = 'testProvide'
+  @Provide('provideMethod') provideMethod () { console.log('test method handler') }
 
-export default class Test extends Vue {
   tableData: Array<Object> = tableData
   tableHeaders: Array<Object> = tableHeaders
   tableParams = {
     search: null
   }
-
-  created () {
-    console.log(11111)
-    this.axios.get('/aaa').then((response:any) => {
-      console.log(response)
-    }).catch((err: any) => {
-      console.log(err)
+  boolean1 = false
+  // v-html 中不能使用{{}}
+  html = '<span style="color: red">{{test}}</span>'
+  test: string = 'test'
+  handler ($event: any) {
+    this.test = $event.target.value
+    console.log($event)
+  }
+  a = {
+    todo: { text: 'todo item 1', bb: 24 },
+    a: 1,
+    b: 'b',
+    c: true,
+    name: 'zs'
+  }
+  testMethod ($event: any) {
+    this.a.c = !this.a.c
+    this.$nextTick(() => {
+      console.log($event.target.innerText)
     })
+  }
+  created () {
+    // console.log(this.bbba)
+    // $axios.post('/test/helloWorld1', {
+    //   // params: {
+    //     // a: [1, 2]
+    //     a: {
+    //       a: 'a',
+    //       b: 'b'
+    //     }
+    //   // }
+    // }).then((response:any) => {
+    //   console.log(response)
+    // })
   }
 }
 
