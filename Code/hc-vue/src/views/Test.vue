@@ -67,6 +67,7 @@
   </v-app>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -93,7 +94,11 @@ export default {
     test1 () {
       this.$Notice.open({ title: 123 })
     }
-  }
+  },
+  computed: mapState([
+    // 映射 this.count 为 store.state.count
+    'login'
+  ])
 }
 </script>
 <style scoped >

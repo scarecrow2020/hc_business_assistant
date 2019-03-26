@@ -59,12 +59,17 @@ export default {
       //     return
       //   }
       // }
-      // this.$axios.get('/login', { params }).then(({ data }) => {
-      //   if (data.success) {
-      //     this.$notify({
-      //       type: 'success',
-      //       message: '登录成功'
-      //     })
+      this.$axios.get('/login', {
+        params: {
+          userName: 'admin',
+          password: 'admin'
+        }
+      }).then(({ data }) => {})
+        // if (data.success) {
+        //   this.$notify({
+        //     type: 'success',
+        //     message: '登录成功'
+        //   })
       this.$store.commit('setUserInfo', { name: 'visitor', loginUuid: 'aaa' })
       this.$router.push({ name: 'backIndex' })
       //   } else {
