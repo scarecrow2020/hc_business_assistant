@@ -1,5 +1,5 @@
 <template>
-  <v-app>settings test page--{{id}}--{{routerParam}}--{{$route.params}}
+  <v-app>test page--{{id}}--{{routerParam}}--{{$route.params}}
     <br/>store:{{$store.state.count}}--{{$store.getters.countName}}
     --{{$store.getters.hello(2)}}
     <v-btn @click="testMethod">Test Method</v-btn>
@@ -11,8 +11,6 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 import { Route, RawLocation } from 'vue-router'
 // import { State, Action, Getter } from 'vuex-class'
 import { mapState } from 'vuex'
-// import $axios from '@/plugins/axios.ts'
-import $axios from 'axios'
 @Component({
   name: 'Test'
 })
@@ -30,15 +28,7 @@ export default class Test extends Vue {
   }
 
   testMethod ($event: any) {
-    $axios.get('http://localhost:8080/fae/admin/userList', {
-      params: {
-        page: 1,
-        size: 10
-      }
-    }).then((response:any) => {
-      console.log(response)
-    })
-    // this.$store.dispatch('addAction', { count: 20 })
+    this.$store.dispatch('addAction', { count: 20 })
     // this.$store.commit({ type: 'add', count: 10 })
     // this.$store.commit('add', { count: 10 })
   }
@@ -56,20 +46,32 @@ export default class Test extends Vue {
     this.init()
     next()
   }
-  aa = {
-        loginName: 'admin',
-        password: 'admin'
-      }
   created () {
     // this.init()
-    $axios.post('http://localhost:8080/fae/admin/adminLogin', this.aa
-    // {
-      // params: {
-        // loginName: 'admin',
-        // password: 'admin'
-      // }
-    // }
-    ).then((response:any) => {
+    this.$axios.post('/test/helloWorld4', {
+      a: 1,
+      b: 'bb',
+      c: true,
+      user: {
+        name: 'zs'
+      },
+      users: [{
+        name: 'zs'
+      }, {
+        name: 'ls'
+      }],
+      map: {
+        a: 1,
+        b: 'bb',
+        c: true
+      },
+      maps: [{
+        d: 4
+      }, {
+        e: 5
+      }]
+    }).then((response:any) => {
+      console.log(response)
     })
   }
   // get mapState([])

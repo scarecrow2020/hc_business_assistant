@@ -1,5 +1,5 @@
 export default {
   BASE: {
-    BASE_URL: '/api'
+    BASE_URL: '/hc'
   }
 }
