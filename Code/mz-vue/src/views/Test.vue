@@ -42,7 +42,7 @@
 import { Component, Vue, Provide } from 'vue-property-decorator'
 
 import { mixins } from 'vue-class-component'
-import $axios from '../plugins/axios'
+// import $axios from '../plugins/axios'
 import test1 from './Test1.vue'
 import Test1 from './Test1.vue';
 const tableHeaders = [

@@ -1,5 +1,4 @@
 import Vue, { VNode } from 'vue'
-
 declare global {
   namespace JSX {
     // tslint:disable no-empty-interface
@@ -9,5 +8,12 @@ declare global {
     interface IntrinsicElements {
       [elem: string]: any
     }
+  }
+}
+
+import axios, { AxiosInstance } from 'axios'
+declare module 'Vue/types/vue' {
+  interface Vue {
+    $axios: AxiosInstance
   }
 }

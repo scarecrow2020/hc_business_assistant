@@ -11,6 +11,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 import { Route, RawLocation } from 'vue-router'
 // import { State, Action, Getter } from 'vuex-class'
 import { mapState } from 'vuex'
+import $axios from 'axios'
 @Component({
   name: 'Test'
 })
@@ -47,18 +48,21 @@ export default class Test extends Vue {
     next()
   }
   created () {
-    this.init()
-    // $axios.post('/test/helloWorld1', {
-    //   // params: {
-    //     // a: [1, 2]
-    //     a: {
-    //       a: 'a',
-    //       b: 'b'
-    //     }
-    //   // }
-    // }).then((response:any) => {
-    //   console.log(response)
-    // })
+    // this.init()
+    $axios.get('/hc/logout', {
+      params: {
+        userId: 1
+        // a: 1,
+        // b: 'bb',
+        // c: true
+        // a: {
+        //   a: 'a',
+        //   b: 'b'
+        // }
+      }
+    }).then((response:any) => {
+      console.log(response)
+    })
   }
   // get mapState([])
 }

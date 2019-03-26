@@ -1,21 +1,16 @@
 import axios from 'axios'
-import router from '../router'
 
 let config = {
-  baseURL: '/hc',
+  baseURL: '/api',
   // timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
   transformRequest: [(data: any) => {
     if (data) {
       let ret = ''
       for (let [key, value] of Object.entries(data)) {
-        let newVal: string = ''
-        if (value instanceof Array || value instanceof Object) {
-          newVal = JSON.stringify(value)
-        } else {
-          newVal = value
+        if (value) {
+          ret += encodeURIComponent(key) + '=' + encodeURIComponent(JSON.stringify(value)) + '&'
         }
-        ret += encodeURIComponent(key) + '=' + encodeURIComponent(newVal) + '&'
       }
       return ret.endsWith('&') ? ret.substring(0, ret.length - 1) : ret
     }
@@ -31,9 +26,7 @@ _axios.interceptors.request.use((config: any) => {
       url += url.indexOf('?') < 0 ? '?' : '&'
       for (let [key, value] of Object.entries(params)) {
         if (value) {
-          if (value instanceof Array) {
-            value = value.join()
-          } else if (value instanceof Object) {
+          if (value instanceof Array || value instanceof Object) {
             value = JSON.stringify(value)
           }
           url += `${key}=${value}&`
@@ -53,12 +46,7 @@ _axios.interceptors.request.use((config: any) => {
 // Add a response interceptor
 _axios.interceptors.response.use(response => {
   // Do something with response data
-  const data = response.data
-  if (data.isLogin === false) {
-    router.push({ name: 'Login' })
-  }
-  // console.log(response)
-  return data
+  return response.data
 }, error => {
   // console.log(error)
   // Do something with response error
