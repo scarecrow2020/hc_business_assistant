@@ -11,8 +11,8 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
 import { Route, RawLocation } from 'vue-router'
 // import { State, Action, Getter } from 'vuex-class'
 import { mapState } from 'vuex'
-import $axios from '@/plugins/axios.ts'
-// import $axios from 'axios'
+// import $axios from '@/plugins/axios.ts'
+import $axios from 'axios'
 @Component({
   name: 'Test'
 })
@@ -70,7 +70,6 @@ export default class Test extends Vue {
       // }
     // }
     ).then((response:any) => {
-      console.log(response)
     })
   }
   // get mapState([])
