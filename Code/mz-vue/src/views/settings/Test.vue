@@ -48,31 +48,31 @@ export default class Test extends Vue {
   }
   created () {
     // this.init()
-    this.$axios.post('/test/helloWorld4', {
-      a: 1,
-      b: 'bb',
-      c: true,
-      user: {
-        name: 'zs'
-      },
-      users: [{
-        name: 'zs'
-      }, {
-        name: 'ls'
-      }],
-      map: {
-        a: 1,
-        b: 'bb',
-        c: true
-      },
-      maps: [{
-        d: 4
-      }, {
-        e: 5
-      }]
-    }).then((response:any) => {
-      console.log(response)
-    })
+    // this.$axios.post('/test/helloWorld4', {
+    //   a: 1,
+    //   b: 'bb',
+    //   c: true,
+    //   user: {
+    //     name: 'zs'
+    //   },
+    //   users: [{
+    //     name: 'zs'
+    //   }, {
+    //     name: 'ls'
+    //   }],
+    //   map: {
+    //     a: 1,
+    //     b: 'bb',
+    //     c: true
+    //   },
+    //   maps: [{
+    //     d: 4
+    //   }, {
+    //     e: 5
+    //   }]
+    // }).then((response:any) => {
+    //   console.log(response)
+    // })
   }
   // get mapState([])
 }
