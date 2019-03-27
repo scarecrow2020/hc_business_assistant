@@ -2,7 +2,6 @@
 import Vue from 'vue'
 import router from '@/router'
 import axios from 'axios'
-import qs from 'qs'
 import Dict from '@/data/dict'
 
 // 取消请求
@@ -21,14 +20,13 @@ let config = {
   transformRequest: [(data: any) => {
     if (data) {
       console.log(data)
-      // return qs.stringify(data)
-      let ret = ''
+      let result = ''
       for (let [key, value] of Object.entries(data)) {
         if (value) {
-          ret += encodeURIComponent(key) + '=' + encodeURIComponent(JSON.stringify(value)) + '&'
+          result += `${encodeURIComponent(key)}=${encodeURIComponent(JSON.stringify(value))}&`
         }
       }
-      return ret.endsWith('&') ? ret.substring(0, ret.length - 1) : ret
+      return result.endsWith('&') ? result.substring(0, result.length - 1) : result
     }
   }]
 }
