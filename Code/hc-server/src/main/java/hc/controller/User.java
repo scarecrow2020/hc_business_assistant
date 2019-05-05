@@ -19,7 +19,7 @@ public class User {
     private UserService userService;
 
     @RequestMapping("/list")
-    public Object list(Long page, Long size, @JsonParam List<String> role) {
+    public Object list(Long page, Long size) {
         return userService.page(new Page(page, size));
     }
 

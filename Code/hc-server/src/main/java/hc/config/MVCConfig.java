@@ -22,23 +22,23 @@ import java.util.List;
 public class MVCConfig implements WebMvcConfigurer {
 
 
-    @Override
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        FastJsonHttpMessageConverter fastJsonConverter = new FastJsonHttpMessageConverter();
-        List<MediaType> mediaTypes = new ArrayList<>();
-        mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
-        mediaTypes.add(MediaType.APPLICATION_JSON);
-        fastJsonConverter.setSupportedMediaTypes(mediaTypes);
-        FastJsonConfig fjc = new FastJsonConfig();
-        fjc.setSerializerFeatures(SerializerFeature.PrettyFormat);
-        fjc.setDateFormat("yyyy-MM-dd HH:mm:ss");
-        fastJsonConverter.setFastJsonConfig(fjc);
-        converters.add(fastJsonConverter);
-    }
-
-    @Override
-    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        resolvers.add(new CustomArgumentResolver());
-    }
+//    @Override
+//    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+//        FastJsonHttpMessageConverter fastJsonConverter = new FastJsonHttpMessageConverter();
+//        List<MediaType> mediaTypes = new ArrayList<>();
+//        mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
+//        mediaTypes.add(MediaType.APPLICATION_JSON);
+//        fastJsonConverter.setSupportedMediaTypes(mediaTypes);
+//        FastJsonConfig fjc = new FastJsonConfig();
+//        fjc.setSerializerFeatures(SerializerFeature.PrettyFormat);
+//        fjc.setDateFormat("yyyy-MM-dd HH:mm:ss");
+//        fastJsonConverter.setFastJsonConfig(fjc);
+//        converters.add(fastJsonConverter);
+//    }
+//
+//    @Override
+//    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+//        resolvers.add(new CustomArgumentResolver());
+//    }
 
 }
